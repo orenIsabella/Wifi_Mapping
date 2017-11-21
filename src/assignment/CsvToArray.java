@@ -61,7 +61,6 @@ public class CsvToArray {
 					ChanToFreq(temp2);
 					temp3=By_Order(temp2);
 					if(chackValid(temp3)){
-						
 					All_Networks.add(temp3);
 					}
 					currentLine = br.readLine();
@@ -106,8 +105,8 @@ public class CsvToArray {
 		return Final;
 	}
 	private static boolean chackValid(ArrayList<String> temp2) {
-		boolean flag=true;		
-		if(temp2.size()!=9||!(temp2.get(6).contains(":")))
+		boolean flag=true;
+		if(temp2.size()!=9||!(temp2.get(6).contains(":"))||temp2.get(0).length()!=19)
 			flag=false;
 		for(int i=0;i<temp2.size();i++)
 		if(temp2.get(i)=="")
