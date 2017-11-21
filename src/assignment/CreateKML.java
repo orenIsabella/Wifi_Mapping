@@ -5,7 +5,28 @@ import java.util.*;
 import java.util.function.Predicate;
 
 public class CreateKML {
-
+	public static void main(String[] args) throws FileNotFoundException {
+	Kml kml = KmlFactory.createKml();
+	String text = "2011-10-02 18:48:05";
+	Timestamp ts = Timestamp.valueOf(text);
+	Placemark p = KmlFactory.createPlacemark();
+	p.setName("uno");
+	p.setVisibility(true);
+	p.setOpen(false);
+	p.createAndSetTimeStamp().addToTimeStampSimpleExtension(ts);
+	p.createAndSetPoint().addToCoordinates(32.957366,34.143567);
+	Placemark p2 = KmlFactory.createPlacemark();
+	p2.setName("dos");
+	p2.setVisibility(true);
+	p2.setOpen(false);
+	p2.createAndSetTimeStamp().addToTimeStampSimpleExtension(ts);
+	p2.createAndSetPoint().addToCoordinates(31.957366,33.143567);
+	de.micromata.opengis.kml.v_2_2_0.Document doc = kml.createAndSetDocument().withName("MyMarkers");
+	kml.setFeature(doc);
+	kml.marshal(new File("C:/Users/Isabella Oren/Desktop/Htest2.kml"));
+	}
+	
+/*
 	private static List<ArrayList<String>> currentcsv=new ArrayList<ArrayList<String>> ();
 
 
@@ -92,5 +113,5 @@ public class CreateKML {
 
 		return flag;
 	}
-	
+	*/
 }
