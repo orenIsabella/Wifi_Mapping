@@ -1,4 +1,4 @@
-package assingment;
+package assignment;
 
 import java.io.*;
 import java.util.*;

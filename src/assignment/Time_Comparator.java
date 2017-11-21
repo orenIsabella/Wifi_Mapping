@@ -1,4 +1,4 @@
-package assingment;
+package assignment;
 import java.util.ArrayList;
 import java.util.Comparator;
 
