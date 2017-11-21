@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class CsvToArrayTest {
+public class Final_orderTest {
 
 	@Test
-	public void testCsvToArray() {
+	public void testFinal_order() {
 		fail("Not yet implemented");
 	}
 
