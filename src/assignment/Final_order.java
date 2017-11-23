@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Final_order {
 
 	/**
-	 * final_order() transform All_Networks to Final_Networks witch contain 
-	 * all the data we need at the correct order.
+	 * @author arbel and isabella
+	 * final_order() transform all the networks we get from csvToArray method to contain 
+	 * only the data we need and at the correct order.
 	 * the method using private methods and Comparator to take only ten best-signal network in each point.
 	 */
 	public void final_order(String folderName){

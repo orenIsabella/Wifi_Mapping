@@ -10,11 +10,8 @@ import java.util.List;
 
 public class CsvToArray {
 
-	
-	
-	
-	
 	/**  
+	 * @author arbel and isabella
 	 *  csvToArray() Reading folder with the method File witch in the java.io,
 	 *  and adding it's files, Line by Line with FileReader and BufferedReader
 	 *  (they are from java.io as well)to ArrayList<String[]> 'All_Networks'.
@@ -109,8 +106,9 @@ public class CsvToArray {
 		if(temp2.size()!=9||!(temp2.get(6).contains(":"))||temp2.get(0).length()!=19)
 			flag=false;
 		for(int i=0;i<temp2.size();i++)
-		if(temp2.get(i)=="")
+		if(temp2.get(i).isEmpty())
 			flag=false;
+		
 		return flag;
 	}
 	

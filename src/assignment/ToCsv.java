@@ -7,8 +7,10 @@ import java.util.List;
 
 public class ToCsv {
 	/**
-	 * toCSV() using PrintWriter from java.io to write Final_Networks into 
-	 *  lines and adding the matching headline.
+	 * @author arbel and isabella
+	 * toCSV() using PrintWriter from java.io to write the final networks 
+	 * that we get from Final_Order method into 
+	 *  lines and adding the matching headline witch formed a .csv file.
 	 */
 	public  void toCSV(String sourseFolder,String DestinationFolder){
 		Array.final_order(sourseFolder);
