@@ -2,7 +2,7 @@ package assignment;
 
 public class Network {
 private String Time,Id,Ssid,Mac;
-private double lot,lon,alt,freq,sign;
+private double lat,lon,alt,freq,sign;
 
 public String getTime() {
 	return Time;
@@ -28,11 +28,11 @@ public String getMac() {
 public void setMac(String mac) {
 	Mac = mac;
 }
-public double getLot() {
-	return lot;
+public double getLat() {
+	return lat;
 }
-public void setLot(double lot) {
-	this.lot = lot;
+public void setLat(double lot) {
+	this.lat = lot;
 }
 public double getLon() {
 	return lon;
@@ -57,6 +57,11 @@ public double getSign() {
 }
 public void setSign(double sign) {
 	this.sign = sign;
+}
+@Override
+public String toString() {
+	return "Network [Time=" + Time + ", Id=" + Id + ", Ssid=" + Ssid + ", Mac=" + Mac + ", lat=" + lat + ", lon=" + lon
+			+ ", alt=" + alt + ", freq=" + freq + ", sign=" + sign + "]";
 }
 
 }
