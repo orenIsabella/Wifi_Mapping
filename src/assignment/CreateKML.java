@@ -14,22 +14,27 @@ import de.micromata.opengis.kml.v_2_2_0.KmlFactory;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 
 public class CreateKML {
-	private static String Id ="";
-	private static Double Lat =0.0;
-	private static Double Lon =0.0;
-	private static Double Alt =0.0;
-
+	private  String Id ="";
+	private  Double Lat =0.0;
+	private  Double Lon =0.0;
+	private  Double Alt =0.0;
+	private String dest;
+	private String source;
 	
-	public static void main(String[] args) throws FileNotFoundException {
-	createTheKmlFile();
+	public CreateKML(String source, String dest) {
+		this.dest = dest;
+		this.source = source;
 	}
+
 	//creates a KML file with a timeline
-	public static void createTheKmlFile() {
+	public void createTheKmlFile() {
+		Final_order a=new Final_order(source,"ScanInput/csvKML.csv");	
+		a.final_order();
 		final Kml kml=new Kml();
 		de.micromata.opengis.kml.v_2_2_0.Document doc = kml.createAndSetDocument();
 		try {
 			
-			FileReader filereader = new FileReader("C:\\Users\\Isabella Oren\\git\\Wifi_Mapping\\ScanInput\\csvToKml.csv");
+			FileReader filereader = new FileReader("ScanInput/csvKML.csv");
 			BufferedReader br = new BufferedReader(filereader);
 			String line;
 			//the first line in the file is not relevant thats why we read it and then dont use it but override it.
@@ -68,7 +73,7 @@ public class CreateKML {
 			line = br.readLine();
 			br.close();
 			filereader.close();
-			kml.marshal(new File("C:\\Users\\Isabella Oren\\git\\Wifi_Mapping\\ScanInput\\kml.kml"));
+			kml.marshal(new File(dest));
 		}
 		catch(IOException ex) {
 			System.out.print("Error reading file\n" + ex);
