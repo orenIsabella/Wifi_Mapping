@@ -2,8 +2,8 @@ package assignment;
 
 public class Network {
 private String Time,Id,Ssid,Mac;
-private double lat,lon,alt,freq,sign;
-
+private double lat,lon,alt,freq;
+private int sign;
 public String getTime() {
 	return Time;
 }
@@ -52,10 +52,10 @@ public double getFreq() {
 public void setFreq(double freq) {
 	this.freq = freq;
 }
-public double getSign() {
+public int getSign() {
 	return sign;
 }
-public void setSign(double sign) {
+public void setSign(int sign) {
 	this.sign = sign;
 }
 @Override
