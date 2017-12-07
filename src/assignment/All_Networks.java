@@ -22,7 +22,7 @@ public void add(ArrayList<String> currentLine){
 		Networks.add(net);
 	}
 public void addId(ArrayList<String> currentLine){
-	
+	ID = currentLine.get(4);
 }
 
 private static void ChanToFreq(Network curr){
