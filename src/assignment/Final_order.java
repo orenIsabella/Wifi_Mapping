@@ -12,26 +12,26 @@ public class Final_order {
 	 */
 	public void final_order(String folderName){
 		Array.csvToArray(folderName);
-		Array.getAll_Networks().sort(COMP_By_TIME);
+		Array.getNets().getNetworks().sort(COMP_By_TIME);
 		String time="";
 		String ID="";
 		String Lat="";
-		Final_Networks.add(Array.getAll_Networks().get(0));
-		for(int i=1;i<Array.getAll_Networks().size();i++){
-			time =Array.getAll_Networks().get(i).get(0);
-			ID=Array.getAll_Networks().get(i).get(1);
-			Lat=Array.getAll_Networks().get(i).get(2);
+		Final_Networks.add(toline(Array.getNets().getNetworks().get(0)));
+		for(int i=1;i<Array.getNets().size();i++){
+			time =Array.getNets().getNetworks().get(i).getTime();
+			ID=Array.getNets().getNetworks().get(i).getId();
+			Lat=Double.toString(Array.getNets().getNetworks().get(i).getLat());
 			if(time.equals(Final_Networks.get(Final_Networks.size()-1).get(0))&&
 					ID.equals(Final_Networks.get(Final_Networks.size()-1).get(1))&&
-					Lat.equals(Final_Networks.get(Final_Networks.size()-1).get(2)) ){
+					Lat.equals(Final_Networks.get(Final_Networks.size()-1).get(2))){
 				addNetToNetwork_Per_Time(i);
-				if(i==Array.getAll_Networks().size()-1){
+				if(i==Array.getNets().getNetworks().size()-1){
 					addNetToFinal_Networks();
 				}
 			}
 			else{
 				addNetToFinal_Networks();
-				Final_Networks.add(Array.getAll_Networks().get(i));
+				Final_Networks.add(toline(Array.getNets().getNetworks().get(i)));
 			}
 
 		}
@@ -66,11 +66,26 @@ public class Final_order {
 		}
 
 	}
+	private ArrayList<String> toline(Network a){
+		ArrayList<String> temp=new ArrayList<String>();
+		temp.add(a.getTime());
+		temp.add(a.getId());
+		temp.add(Double.toString(a.getLat()));
+		temp.add(Double.toString(a.getLon()));
+		temp.add(Double.toString(a.getAlt()));
+		temp.add(a.getSsid());
+		temp.add(a.getMac());
+		temp.add(Double.toString(a.getFreq()));
+		temp.add(Integer.toString(a.getSign()));
+		return temp;
+	}
+	
 	private static void addNetToNetwork_Per_Time(int k){
 		ArrayList<String> temp=new ArrayList<String>();
-		for(int i=5;i<=8;i++){
-			temp.add(Array.getAll_Networks().get(k).get(i));
-		}
+			temp.add(Array.getNets().getNetworks().get(k).getSsid());
+			temp.add(Array.getNets().getNetworks().get(k).getMac());
+			temp.add(Double.toString(Array.getNets().getNetworks().get(k).getFreq()));
+			temp.add(Integer.toString(Array.getNets().getNetworks().get(k).getSign()));
 		Network_Per_Time.add(temp);
 	}
 	private static void topTen (){
