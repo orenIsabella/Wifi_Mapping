@@ -1,12 +1,13 @@
 package assignment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class All_Networks {
 	private ArrayList<Network> Networks=new ArrayList<Network>();
 	private String ID;
 	
-public void add(ArrayList<String> currentLine){
+public void add(List<String> currentLine){
 	Network net=new Network();
 	net.setTime(currentLine.get(3));
 	net.setId(ID);
@@ -16,13 +17,13 @@ public void add(ArrayList<String> currentLine){
 	net.setSsid(currentLine.get(1));
 	net.setMac(currentLine.get(0));
 	net.setFreq(Double.parseDouble(currentLine.get(4)));
-	net.setSign(Double.parseDouble(currentLine.get(5)));
+	net.setSign(Integer.parseInt(currentLine.get(5)));
 	ChanToFreq(net);
 	if(chackValid(net))
 		Networks.add(net);
 	}
-public void addId(ArrayList<String> currentLine){
-	ID = currentLine.get(4);
+public void addId(List<String> currentLine){
+	ID = currentLine.get(4).split("=")[1];
 }
 
 private static void ChanToFreq(Network curr){
@@ -36,18 +37,24 @@ private static boolean chackValid(Network curr) {
 	if(!(curr.getMac().contains(":"))||curr.getTime().length()!=19)
 		flag=false;
 	if(
-			curr.getTime()==null||
+			curr.getTime().isEmpty()||
 			curr.getLat()==0||
 			curr.getLon()==0||
 			curr.getAlt()==0||
-			curr.getSsid()==null||
-			curr.getMac()==null||
+			curr.getSsid().isEmpty()||
+			curr.getMac().isEmpty()||
 			curr.getFreq()==0||
 			curr.getSign()==0
 			)
 		flag=false;
 	
 	return flag;
+}
+public ArrayList<Network> getNetworks() {
+	return Networks;
+}
+public int size(){
+	return Networks.size();
 }
 
 }
