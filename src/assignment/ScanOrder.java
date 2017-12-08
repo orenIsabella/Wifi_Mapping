@@ -94,7 +94,7 @@ public class ScanOrder {
 			}
 		}
 	}
-	private static void Head(){
+	private  void Head(){
 		HeadLine.add("Time");
 		HeadLine.add("ID");
 		HeadLine.add("Lat");
@@ -110,12 +110,17 @@ public class ScanOrder {
 			HeadLine.add("Signal");
 		}
 	}
+	public ArrayList<ArrayList<String>> getFinal_Networks() {
+		return Final_Networks;
+	}
+
+	
 	String DestinationFolder;
 	private static ArrayList<String> HeadLine=new ArrayList<String>();
 	private All_Networks nets; 
-	private static int NetCounter=0;
-	private static final Signal_Comparator COMP_By_SIGNAL = new Signal_Comparator();
-	private static final Time_Comparator COMP_By_TIME = new Time_Comparator();
-	private static ArrayList<ArrayList<String>> Final_Networks=new ArrayList<ArrayList<String>>();
-	private static ArrayList<ArrayList<String>> Network_Per_Time=new ArrayList<ArrayList<String>>();
+	private  int NetCounter=0;
+	private  final Signal_Comparator COMP_By_SIGNAL = new Signal_Comparator();
+	private  final Time_Comparator COMP_By_TIME = new Time_Comparator();
+	private  ArrayList<ArrayList<String>> Final_Networks=new ArrayList<ArrayList<String>>();
+	private  ArrayList<ArrayList<String>> Network_Per_Time=new ArrayList<ArrayList<String>>();
 }
