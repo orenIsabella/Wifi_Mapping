@@ -17,7 +17,7 @@ public class ToCsvTest {
 		ArrayList<String> test2=new ArrayList<String>();
 		test2.add(":-)");
 		test.add(test2);
-		ToCsv Ans=new ToCsv("ScanInput",test);
+		ToCsv Ans=new ToCsv("ScanInput\\csvCheck.csv",test);
 		Ans.toCSV();
 		File destfolder=new File("ScanInput");
 		File[] list_of_files=destfolder.listFiles();
