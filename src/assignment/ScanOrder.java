@@ -2,7 +2,7 @@ package assignment;
 
 import java.util.ArrayList;
 
-public class Final_order {
+public class ScanOrder {
 
 	/**
 	 * @author arbel and isabella
@@ -10,7 +10,7 @@ public class Final_order {
 	 * only the data we need and at the correct order.
 	 * the method using private methods and Comparator to take only ten best-signal network in each point.
 	 */
-	public Final_order(String folderName,String dest){
+	public ScanOrder(String folderName,String dest){
 		All_Networks temp=new All_Networks(folderName);
 		this.nets = temp;
 		DestinationFolder=dest;

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CsvToArray {
+public class CreateNets {
 
 	/**  
 	 * @author arbel and isabella
@@ -18,7 +18,7 @@ public class CsvToArray {
 	 *  in the process, every line run in  private methods to Extract only the date we required.  
 	 */
 
-	public  void csvToArray (String folderName){
+	public  void CreateN (String folderName){
 
 		File The_file=new File(folderName);
 		File[] filePath=The_file.listFiles();

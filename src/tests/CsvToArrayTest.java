@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import assignment.CsvToArray;
+import assignment.CreateNets;
 import assignment.Network;
 
 
@@ -15,8 +15,8 @@ public class CsvToArrayTest {
 
 	@Test
 	public void testCsvToArray() {
-		CsvToArray Array=new CsvToArray();
-		Array.csvToArray("ScanInput");
+		CreateNets Array=new CreateNets();
+		Array.CreateN("ScanInput");
 		ArrayList<Network> arr_test =Array.getNets().getNetworks();
 
 		for(int j=0;j<arr_test.size();j++){

@@ -28,7 +28,7 @@ public class CreateKML {
 
 	//creates a KML file with a timeline
 	public void createTheKmlFile() {
-		Final_order a=new Final_order(source,"ScanInput/csvKML.csv");	
+		ScanOrder a=new ScanOrder(source,"ScanInput/csvKML.csv");	
 		a.final_order();
 		final Kml kml=new Kml();
 		de.micromata.opengis.kml.v_2_2_0.Document doc = kml.createAndSetDocument();

@@ -8,8 +8,8 @@ public class All_Networks {
 
 	
 public All_Networks(String SourceFile) {
-	CsvToArray a=new CsvToArray();
-	a.csvToArray(SourceFile);
+	CreateNets a=new CreateNets();
+	a.CreateN(SourceFile);
 	Networks=a.getNets();
 	}
 public ArrayList<Network> getNetworks() {

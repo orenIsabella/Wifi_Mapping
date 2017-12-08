@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import assignment.Final_order;
+import assignment.ScanOrder;
 
 public class Final_orderTest {
 
 	@Test
 	public void testFinal_order() {
-		Final_order Array=new Final_order();
+		ScanOrder Array=new ScanOrder();
 		Array.final_order("ScanInput");
 		ArrayList<ArrayList<String>> test=Array.getFinal_Networks();
 		for(int i=0;i<test.size()-1;i++){
