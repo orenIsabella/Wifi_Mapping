@@ -4,7 +4,7 @@ public class Network {
 private String Time,Id,Ssid,Mac;
 private double freq;
 private int sign;
-private Point3D location;
+private Point3D location=new Point3D();
 public String getTime() {
 	return Time;
 }
