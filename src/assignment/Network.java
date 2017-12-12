@@ -2,8 +2,9 @@ package assignment;
 
 public class Network {
 private String Time,Id,Ssid,Mac;
-private double lat,lon,alt,freq;
+private double freq;
 private int sign;
+private Point3D location;
 public String getTime() {
 	return Time;
 }
@@ -28,23 +29,12 @@ public String getMac() {
 public void setMac(String mac) {
 	Mac = mac;
 }
-public double getLat() {
-	return lat;
+
+public Point3D getLocation() {
+	return location;
 }
-public void setLat(double lot) {
-	this.lat = lot;
-}
-public double getLon() {
-	return lon;
-}
-public void setLon(double lon) {
-	this.lon = lon;
-}
-public double getAlt() {
-	return alt;
-}
-public void setAlt(double alt) {
-	this.alt = alt;
+public void setLocation(Point3D location) {
+	this.location = location;
 }
 public double getFreq() {
 	return freq;
@@ -58,10 +48,11 @@ public int getSign() {
 public void setSign(int sign) {
 	this.sign = sign;
 }
+
 @Override
 public String toString() {
-	return "Network [Time=" + Time + ", Id=" + Id + ", Ssid=" + Ssid + ", Mac=" + Mac + ", lat=" + lat + ", lon=" + lon
-			+ ", alt=" + alt + ", freq=" + freq + ", sign=" + sign + "]";
+	return "Network [Time=" + Time + ", Id=" + Id + ", Ssid=" + Ssid + ", Mac=" + Mac + ", freq=" + freq + ", sign="
+			+ sign + ", location=" + location + "]";
 }
 
 }

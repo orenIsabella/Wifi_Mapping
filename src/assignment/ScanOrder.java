@@ -25,7 +25,7 @@ public class ScanOrder {
 		for(int i=1;i<nets.size();i++){
 			time =nets.getNetworks().get(i).getTime();
 			ID=nets.getNetworks().get(i).getId();
-			Lat=Double.toString(nets.getNetworks().get(i).getLat());
+			Lat=Double.toString(nets.getNetworks().get(i).getLocation().getLat());
 			if(time.equals(Final_Networks.get(Final_Networks.size()-1).get(0))&&
 					ID.equals(Final_Networks.get(Final_Networks.size()-1).get(1))&&
 					Lat.equals(Final_Networks.get(Final_Networks.size()-1).get(2))){
@@ -64,9 +64,9 @@ public class ScanOrder {
 		ArrayList<String> temp=new ArrayList<String>();
 		temp.add(a.getTime());
 		temp.add(a.getId());
-		temp.add(Double.toString(a.getLat()));
-		temp.add(Double.toString(a.getLon()));
-		temp.add(Double.toString(a.getAlt()));
+		temp.add(Double.toString(a.getLocation().getLat()));
+		temp.add(Double.toString(a.getLocation().getLon()));
+		temp.add(Double.toString(a.getLocation().getAlt()));
 		temp.add(a.getSsid());
 		temp.add(a.getMac());
 		temp.add(Double.toString(a.getFreq()));

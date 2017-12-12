@@ -70,9 +70,9 @@ public class CreateNets {
 		Network net=new Network();
 		net.setTime(currentLine.get(3));
 		net.setId(ID);
-		net.setLat(Double.parseDouble(currentLine.get(6)));
-		net.setLon(Double.parseDouble(currentLine.get(7)));
-		net.setAlt(Double.parseDouble(currentLine.get(8)));
+		net.getLocation().setLat(Double.parseDouble(currentLine.get(6)));
+		net.getLocation().setLon(Double.parseDouble(currentLine.get(7)));
+		net.getLocation().setAlt(Double.parseDouble(currentLine.get(8)));
 		net.setSsid(currentLine.get(1));
 		net.setMac(currentLine.get(0));
 		net.setFreq(Double.parseDouble(currentLine.get(4)));
@@ -97,9 +97,9 @@ public class CreateNets {
 			flag=false;
 		if(
 				curr.getTime().isEmpty()||
-				curr.getLat()==0||
-				curr.getLon()==0||
-				curr.getAlt()==0||
+				curr.getLocation().getLat()==-4000||
+				curr.getLocation().getLon()==-4000||
+				curr.getLocation().getAlt()==-4000||
 				curr.getSsid().isEmpty()||
 				curr.getMac().isEmpty()||
 				curr.getFreq()==0||
