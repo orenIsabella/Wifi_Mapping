@@ -27,8 +27,8 @@ public double getLat() {
 	return Lat;
 }
 
-public void setLat(double lan) {
-	this.Lat = lan;
+public void setLat(double lat) {
+	this.Lat = lat;
 }
 
 public double getLon() {
