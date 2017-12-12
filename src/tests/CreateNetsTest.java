@@ -25,13 +25,13 @@ public class CreateNetsTest {
 				fail("time is not correct");
 			if(arr_test.get(j).getId().contains("&")||arr_test.get(j).getId().isEmpty())
 				fail("ID is bad or missing");
-			double lat=arr_test.get(j).getLat();
+			double lat=arr_test.get(j).getLocation().getLat();
 			if(lat>90||lat<0)
 				fail("Lat is bad");
-			double lon=arr_test.get(j).getLon();
+			double lon=arr_test.get(j).getLocation().getLon();
 			if(lon>180||lon<0)
 				fail("Lon is bad");
-			double Alt=arr_test.get(j).getAlt();
+			double Alt=arr_test.get(j).getLocation().getAlt();
 			if(Alt>2000)
 				fail("Alt is bad");
 			if(arr_test.get(j).getSsid().isEmpty())
