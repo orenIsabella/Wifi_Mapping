@@ -104,10 +104,10 @@ public class ScanOrder {
 		;
 		if(NetCounter>10)NetCounter=10;
 		for(int i=1;i<=NetCounter;i++){
-			HeadLine.add("SSID");
-			HeadLine.add("MAC");
-			HeadLine.add("Frequncy");
-			HeadLine.add("Signal");
+			HeadLine.add("SSID"+i);
+			HeadLine.add("MAC"+i);
+			HeadLine.add("Frequncy"+i);
+			HeadLine.add("Signal"+i);
 		}
 	}
 	public ArrayList<ArrayList<String>> getFinal_Networks() {
