@@ -6,14 +6,16 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import assignment.All_Networks;
 import assignment.ScanOrder;
 
 public class ScanOrderTest {
 
 	@Test
 	public void testFinal_order() {
-		ScanOrder Array=new ScanOrder("ScanInput","ScanInput/csvtest.csv");	
-		Array.final_order();
+		All_Networks nets=new All_Networks("ScanInput");
+		ScanOrder Array=new ScanOrder(nets,"ScanInput/csvtest.csv");	
+		Array.order();
 		ArrayList<ArrayList<String>> test=Array.getFinal_Networks();
 		for(int i=0;i<test.size()-1;i++){
 			ArrayList<String> checkedLine=test.get(i);

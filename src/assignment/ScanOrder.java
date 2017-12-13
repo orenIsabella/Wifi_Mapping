@@ -10,13 +10,12 @@ public class ScanOrder {
 	 * only the data we need and at the correct order.
 	 * the method using private methods and Comparator to take only ten best-signal network in each point.
 	 */
-	public ScanOrder(String folderName,String dest){
-		All_Networks temp=new All_Networks(folderName);
-		this.nets = temp;
+	public ScanOrder(All_Networks nets,String dest){
+		this.nets = nets;
 		DestinationFolder=dest;
 	}
 	
-	public void final_order(){
+	public void order(){
 		nets.getNetworks().sort(COMP_By_TIME);
 		String time="";
 		String ID="";

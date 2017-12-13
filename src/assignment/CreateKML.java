@@ -19,17 +19,17 @@ public class CreateKML {
 	private  Double Lon =0.0;
 	private  Double Alt =0.0;
 	private String dest;
-	private String source;
+	private All_Networks nets;
 	
-	public CreateKML(String source, String dest) {
+	public CreateKML(All_Networks nets, String dest) {
 		this.dest = dest;
-		this.source = source;
+		this.nets = nets;
 	}
 
 	//creates a KML file with a timeline
 	public void createTheKmlFile() {
-		ScanOrder a=new ScanOrder(source,"ScanInput/csvKML.csv");	
-		a.final_order();
+		ScanOrder a=new ScanOrder(nets,"ScanInput/csvKML.csv");	
+		a.order();
 		final Kml kml=new Kml();
 		de.micromata.opengis.kml.v_2_2_0.Document doc = kml.createAndSetDocument();
 		try {
