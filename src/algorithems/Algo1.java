@@ -1,4 +1,9 @@
-package assignment;
+package algorithems;
+
+import assignment.All_Networks;
+import assignment.FilterByMac;
+import assignment.Point3D;
+import assignment.Signal_Comp2;
 
 public class Algo1 {
 	
