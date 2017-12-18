@@ -7,6 +7,7 @@ import assignment.Point3D;
 public class A_Point {
 private ArrayList<Network> nets=new ArrayList<Network>();
 private String Time,ID;
+private double weight;
 private Point3D location=new Point3D();
 
 public ArrayList<Network> getNets() {
@@ -32,6 +33,12 @@ public Point3D getLocation() {
 }
 public void setLocation(Point3D location) {
 	this.location = location;
+}
+public double getWeight() {
+	return weight;
+}
+public void setWeight(double weight) {
+	this.weight = weight;
 }
 
 
