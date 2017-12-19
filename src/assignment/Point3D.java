@@ -58,4 +58,10 @@ public class Point3D {
 		}
 		else return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Point3D [Lat=" + Lat + ", Lon=" + Lon + ", Alt=" + Alt + "]";
+	}
+	
 }
