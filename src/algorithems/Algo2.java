@@ -27,23 +27,24 @@ public class Algo2 {
 		for(int i=0;i<Comp.size();i++){
 			Comp.getNetworks().get(i).setLocation(simNets(Comp.getNetworks().get(i)));
 		}//export to csv 
-		toArrayList b=new toArrayList("C:/Users/arbel/Desktop/alg1.csv", Comp);
+		toArrayList b=new toArrayList("C:/Users/arbel/Desktop/alg2.csv", Comp);
 		b.toCSV();
 	}
 	//comparing every line in the Data (file without the ???) to the line we sent to him
 	//checking first if there any similar MACs between them and sending to find the similarity level
 	//foe every one.
 	private Point3D simNets(A_Point a){
+		//System.out.println(a.toString());
 		Networks Data=new Networks(Data1);
 		Point3D ans=new Point3D();
 		A_Point arr[]=new A_Point[3];
 
 
 		for(int i=0;i<Data.size();i++){
-
 			ArrayList<Network> corrnet=Data.getNetworks().get(i).getNets();
+			double one=0,two=0,three=0;
 			if(corrnet.size()>=3&&a.getNets().size()>=3){
-				double one=0,two=0,three=0;
+
 				if(a.getNets().get(1).getMac().equals(corrnet.get(1).getMac())){
 					one=comper(a.getNets().get(1),corrnet.get(1));
 					if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
@@ -142,10 +143,47 @@ public class Algo2 {
 				//adding the pi section in the exel:  
 				Data.getNetworks().get(i).setWeight(one*two*three);
 			}
-			else continue;
+			else if(corrnet.size()==2&&a.getNets().size()==2){
+				if(a.getNets().get(0).getMac().equals(corrnet.get(0).getMac())){
+					one=comper(a.getNets().get(0),corrnet.get(0));
+					two=comper(a.getNets().get(1),corrnet.get(1));
+				}
+				else if(a.getNets().get(0).getMac().equals(corrnet.get(1).getMac())){
+					one=comper(a.getNets().get(0),corrnet.get(1));
+					two=comper(a.getNets().get(1),corrnet.get(0));
+
+				}
+				else if(a.getNets().get(1).getMac().equals(corrnet.get(0).getMac())){
+					one=comper(a.getNets().get(1),corrnet.get(0));
+					two=comper(a.getNets().get(0),corrnet.get(1));
+				}
+				else if(a.getNets().get(1).getMac().equals(corrnet.get(1).getMac())){
+					one=comper(a.getNets().get(1),corrnet.get(1));
+					two=comper(a.getNets().get(1),corrnet.get(0));
+
+				}
+				else{
+					one=comper(a.getNets().get(1),corrnet.get(1));
+					two=comper(a.getNets().get(0),corrnet.get(0));
+				}
+				Data.getNetworks().get(i).setWeight(one*two);
+			}
+			else{
+				int j=0;
+				boolean flag=true;
+				while(flag &&j<=(corrnet.size()-1)){
+					if (a.getNets().get(0).getMac().equals(corrnet.get(j).getMac())){
+						one=comper(a.getNets().get(0),corrnet.get(j));
+						flag=false;
+					}
+					j++;
+				}
+				if (flag) one=comper(a.getNets().get(0),corrnet.get(0));
+				Data.getNetworks().get(i).setWeight(one);
+			}
 		}
 		//there is comparator for the weights to sort by there value and to take 3 best:
-		Data.getNetworks().sort(comper);
+		Data.getNetworks().sort(comper);;
 		arr[0]=Data.getNetworks().get(0);
 		arr[1]=Data.getNetworks().get(1);
 		arr[2]=Data.getNetworks().get(2);
@@ -169,6 +207,7 @@ public class Algo2 {
 			diff=Math.max(3,Math.abs(Math.abs(comp.getSign())-Math.abs(data.getSign())));
 		}else diff=100;
 		double weight=(norm/(Math.pow(diff,sig_diff )*Math.pow(comp.getSign(),power )));
+		//System.out.println(weight+" "+diff+" "+comp.getSign());
 		return weight;
 
 	}
@@ -179,6 +218,11 @@ public class Algo2 {
 		Point3D point3=new Point3D();
 		Point3D ans=new Point3D();
 		point1.setLat(a[0].getLocation().getLat()*a[0].getWeight());
+		//		System.out.println(a[0].getWeight());
+		//		System.out.println(a[1].getWeight());
+		//		System.out.println(a[2].getWeight());
+		//		System.out.println();
+
 		point2.setLat(a[1].getLocation().getLat()*a[1].getWeight());
 		point3.setLat(a[2].getLocation().getLat()*a[2].getWeight());
 		point1.setLon(a[0].getLocation().getLon()*a[0].getWeight());
