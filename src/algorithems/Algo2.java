@@ -16,21 +16,23 @@ public class Algo2 {
 	private Networks Data1=new Networks();
 	private Networks Comp=new Networks();
 	private Weight_Comperator comper=new Weight_Comperator();
-	
-	
+
+
 	public Algo2(String Data2, String comp2) {
 		Data1.addFromInput(Data2);
 		Comp.addFromInput(comp2);
 	}
-
+	//sending every line from the file with the ??? to find it's location
 	public void algo2(){
 		for(int i=0;i<Comp.size();i++){
 			Comp.getNetworks().get(i).setLocation(simNets(Comp.getNetworks().get(i)));
-		}
+		}//export to csv 
 		toArrayList b=new toArrayList("C:/Users/arbel/Desktop/alg1.csv", Comp);
 		b.toCSV();
 	}
-
+	//comparing every line in the Data (file without the ???) to the line we sent to him
+	//checking first if there any similar MACs between them and sending to find the similarity level
+	//foe every one.
 	private Point3D simNets(A_Point a){
 		Networks Data=new Networks(Data1);
 		Point3D ans=new Point3D();
@@ -38,135 +40,139 @@ public class Algo2 {
 
 
 		for(int i=0;i<Data.size();i++){
-			
+
 			ArrayList<Network> corrnet=Data.getNetworks().get(i).getNets();
 			if(corrnet.size()>=3&&a.getNets().size()>=3){
-			double one=0,two=0,three=0;
-			if(a.getNets().get(1).getMac().equals(corrnet.get(1).getMac())){
-				one=comper(a.getNets().get(1),corrnet.get(1));
-				if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
-					two=comper(a.getNets().get(2),corrnet.get(2));
-					three=comper(a.getNets().get(0),corrnet.get(0));
-				}else {
-					two=comper(a.getNets().get(0),corrnet.get(2));
-					three=comper(a.getNets().get(2),corrnet.get(0));
-				}
-			}
-			else if(a.getNets().get(1).getMac().equals(corrnet.get(2).getMac())){
-				one=comper(a.getNets().get(1),corrnet.get(2));
-				if(a.getNets().get(2).getMac().equals(corrnet.get(1).getMac())){
-					two=comper(a.getNets().get(2),corrnet.get(1));
-					three=comper(a.getNets().get(0),corrnet.get(0));
-				}else {
-					two=comper(a.getNets().get(0),corrnet.get(1));
-					three=comper(a.getNets().get(2),corrnet.get(0));
-				}
-			}
-			else if(a.getNets().get(1).getMac().equals(corrnet.get(0).getMac())){
-				one=comper(a.getNets().get(1),corrnet.get(0));
-				if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
-					two=comper(a.getNets().get(2),corrnet.get(2));
-					three=comper(a.getNets().get(0),corrnet.get(1));
-				}else {
-					two=comper(a.getNets().get(0),corrnet.get(2));
-					three=comper(a.getNets().get(2),corrnet.get(1));
-				}
-			}
-			else if(a.getNets().get(2).getMac().equals(corrnet.get(1).getMac())){
-				one=comper(a.getNets().get(2),corrnet.get(1));
-				if(a.getNets().get(1).getMac().equals(corrnet.get(2).getMac())){
-					two=comper(a.getNets().get(1),corrnet.get(2));
-					three=comper(a.getNets().get(0),corrnet.get(0));
-				}else {
-					two=comper(a.getNets().get(0),corrnet.get(2));
-					three=comper(a.getNets().get(2),corrnet.get(0));
-				}
-			}
-			else if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
-				one=comper(a.getNets().get(2),corrnet.get(2));
+				double one=0,two=0,three=0;
 				if(a.getNets().get(1).getMac().equals(corrnet.get(1).getMac())){
-					two=comper(a.getNets().get(1),corrnet.get(1));
+					one=comper(a.getNets().get(1),corrnet.get(1));
+					if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
+						two=comper(a.getNets().get(2),corrnet.get(2));
+						three=comper(a.getNets().get(0),corrnet.get(0));
+					}else {
+						two=comper(a.getNets().get(0),corrnet.get(2));
+						three=comper(a.getNets().get(2),corrnet.get(0));
+					}
+				}
+				else if(a.getNets().get(1).getMac().equals(corrnet.get(2).getMac())){
+					one=comper(a.getNets().get(1),corrnet.get(2));
+					if(a.getNets().get(2).getMac().equals(corrnet.get(1).getMac())){
+						two=comper(a.getNets().get(2),corrnet.get(1));
+						three=comper(a.getNets().get(0),corrnet.get(0));
+					}else {
+						two=comper(a.getNets().get(0),corrnet.get(1));
+						three=comper(a.getNets().get(2),corrnet.get(0));
+					}
+				}
+				else if(a.getNets().get(1).getMac().equals(corrnet.get(0).getMac())){
+					one=comper(a.getNets().get(1),corrnet.get(0));
+					if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
+						two=comper(a.getNets().get(2),corrnet.get(2));
+						three=comper(a.getNets().get(0),corrnet.get(1));
+					}else {
+						two=comper(a.getNets().get(0),corrnet.get(2));
+						three=comper(a.getNets().get(2),corrnet.get(1));
+					}
+				}
+				else if(a.getNets().get(2).getMac().equals(corrnet.get(1).getMac())){
+					one=comper(a.getNets().get(2),corrnet.get(1));
+					if(a.getNets().get(1).getMac().equals(corrnet.get(2).getMac())){
+						two=comper(a.getNets().get(1),corrnet.get(2));
+						three=comper(a.getNets().get(0),corrnet.get(0));
+					}else {
+						two=comper(a.getNets().get(0),corrnet.get(2));
+						three=comper(a.getNets().get(2),corrnet.get(0));
+					}
+				}
+				else if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
+					one=comper(a.getNets().get(2),corrnet.get(2));
+					if(a.getNets().get(1).getMac().equals(corrnet.get(1).getMac())){
+						two=comper(a.getNets().get(1),corrnet.get(1));
+						three=comper(a.getNets().get(0),corrnet.get(0));
+					}else {
+						two=comper(a.getNets().get(0),corrnet.get(1));
+						three=comper(a.getNets().get(1),corrnet.get(0));
+					}
+				}
+				else if(a.getNets().get(2).getMac().equals(corrnet.get(0).getMac())){
+					one=comper(a.getNets().get(2),corrnet.get(0));
+					if(a.getNets().get(1).getMac().equals(corrnet.get(2).getMac())){
+						two=comper(a.getNets().get(1),corrnet.get(2));
+						three=comper(a.getNets().get(0),corrnet.get(1));
+					}else {
+						two=comper(a.getNets().get(0),corrnet.get(2));
+						three=comper(a.getNets().get(1),corrnet.get(1));
+					}
+				}
+				else if(a.getNets().get(0).getMac().equals(corrnet.get(1).getMac())){
+					one=comper(a.getNets().get(0),corrnet.get(1));
+					if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
+						two=comper(a.getNets().get(2),corrnet.get(2));
+						three=comper(a.getNets().get(1),corrnet.get(0));
+					}else {
+						two=comper(a.getNets().get(1),corrnet.get(2));
+						three=comper(a.getNets().get(2),corrnet.get(0));
+					}
+				}
+				else if(a.getNets().get(0).getMac().equals(corrnet.get(2).getMac())){
+					one=comper(a.getNets().get(0),corrnet.get(2));
+					if(a.getNets().get(2).getMac().equals(corrnet.get(1).getMac())){
+						two=comper(a.getNets().get(2),corrnet.get(1));
+						three=comper(a.getNets().get(1),corrnet.get(0));
+					}else {
+						two=comper(a.getNets().get(1),corrnet.get(1));
+						three=comper(a.getNets().get(2),corrnet.get(0));
+					}
+				}
+				else if(a.getNets().get(0).getMac().equals(corrnet.get(0).getMac())){
+					one=comper(a.getNets().get(0),corrnet.get(0));
+					if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
+						two=comper(a.getNets().get(2),corrnet.get(2));
+						three=comper(a.getNets().get(1),corrnet.get(1));
+					}else {
+						two=comper(a.getNets().get(1),corrnet.get(2));
+						three=comper(a.getNets().get(2),corrnet.get(1));
+					}
+				}
+				else{
+					one=comper(a.getNets().get(1),corrnet.get(1));
+					two=comper(a.getNets().get(2),corrnet.get(2));
 					three=comper(a.getNets().get(0),corrnet.get(0));
-				}else {
-					two=comper(a.getNets().get(0),corrnet.get(1));
-					three=comper(a.getNets().get(1),corrnet.get(0));
 				}
+				//adding the pi section in the exel:  
+				Data.getNetworks().get(i).setWeight(one*two*three);
 			}
-			else if(a.getNets().get(2).getMac().equals(corrnet.get(0).getMac())){
-				one=comper(a.getNets().get(2),corrnet.get(0));
-				if(a.getNets().get(1).getMac().equals(corrnet.get(2).getMac())){
-					two=comper(a.getNets().get(1),corrnet.get(2));
-					three=comper(a.getNets().get(0),corrnet.get(1));
-				}else {
-					two=comper(a.getNets().get(0),corrnet.get(2));
-					three=comper(a.getNets().get(1),corrnet.get(1));
-				}
-			}
-			else if(a.getNets().get(0).getMac().equals(corrnet.get(1).getMac())){
-				one=comper(a.getNets().get(0),corrnet.get(1));
-				if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
-					two=comper(a.getNets().get(2),corrnet.get(2));
-					three=comper(a.getNets().get(1),corrnet.get(0));
-				}else {
-					two=comper(a.getNets().get(1),corrnet.get(2));
-					three=comper(a.getNets().get(2),corrnet.get(0));
-				}
-			}
-			else if(a.getNets().get(0).getMac().equals(corrnet.get(2).getMac())){
-				one=comper(a.getNets().get(0),corrnet.get(2));
-				if(a.getNets().get(2).getMac().equals(corrnet.get(1).getMac())){
-					two=comper(a.getNets().get(2),corrnet.get(1));
-					three=comper(a.getNets().get(1),corrnet.get(0));
-				}else {
-					two=comper(a.getNets().get(1),corrnet.get(1));
-					three=comper(a.getNets().get(2),corrnet.get(0));
-				}
-			}
-			else if(a.getNets().get(0).getMac().equals(corrnet.get(0).getMac())){
-				one=comper(a.getNets().get(0),corrnet.get(0));
-				if(a.getNets().get(2).getMac().equals(corrnet.get(2).getMac())){
-					two=comper(a.getNets().get(2),corrnet.get(2));
-					three=comper(a.getNets().get(1),corrnet.get(1));
-				}else {
-					two=comper(a.getNets().get(1),corrnet.get(2));
-					three=comper(a.getNets().get(2),corrnet.get(1));
-				}
-			}
-			else{
-				one=comper(a.getNets().get(1),corrnet.get(1));
-				two=comper(a.getNets().get(2),corrnet.get(2));
-				three=comper(a.getNets().get(0),corrnet.get(0));
-			}
-		//	System.out.println("i: "+i+" one: "+one+ " two: "+two+ " three: "+three);
-			Data.getNetworks().get(i).setWeight(one*two*three);
-		}
 			else continue;
 		}
-		//Data.getNetworks().sort(comper);
+		//there is comparator for the weights to sort by there value and to take 3 best:
+		Data.getNetworks().sort(comper);
 		arr[0]=Data.getNetworks().get(0);
 		arr[1]=Data.getNetworks().get(1);
 		arr[2]=Data.getNetworks().get(2);
-//		
-//		System.out.println(arr[0].getWeight());
-//		System.out.println(arr[1].getWeight());
-//		System.out.println(arr[2].getWeight());
-//		System.out.println();
+		//here I checked if the sorting actually worked and to an impact- its looks like its not
+		//really had any effect to the result
+		//	System.out.println(arr[0].getWeight());
+		//  System.out.println(arr[1].getWeight());
+		//	System.out.println(arr[2].getWeight());
+		//	System.out.println();
+
+		//sending to function that gives me the final location for the line
 		ans=weight(arr);
-		//System.out.println(ans.toString());
+
 		return ans;
 	}
+
+	//calculating pi
 	private double comper(Network comp,Network data){
 		int diff=0;
 		if(comp.getMac().equals(data.getMac())){
 			diff=Math.max(3,Math.abs(Math.abs(comp.getSign())-Math.abs(data.getSign())));
-			//System.out.println("m "+diff);
-			
 		}else diff=100;
 		double weight=(norm/(Math.pow(diff,sig_diff )*Math.pow(comp.getSign(),power )));
-		System.out.println(comp.getSign()+" "+weight+" "+diff);
 		return weight;
 
 	}
+	//calculating the final point with the 3 networks that have the highest weight
 	private Point3D weight(A_Point a[]){
 		Point3D point1=new Point3D();
 		Point3D point2=new Point3D();
@@ -185,7 +191,6 @@ public class Algo2 {
 		ans.setLat((point1.getLat()+point2.getLat()+point3.getLat())/sumWeight);
 		ans.setLon((point1.getLon()+point2.getLon()+point3.getLon())/sumWeight);
 		ans.setAlt((point1.getAlt()+point2.getAlt()+point3.getAlt())/sumWeight);
-		//System.out.println(ans.toString());
 		return ans;
 	}
 
