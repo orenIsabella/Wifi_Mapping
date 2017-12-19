@@ -218,11 +218,6 @@ public class Algo2 {
 		Point3D point3=new Point3D();
 		Point3D ans=new Point3D();
 		point1.setLat(a[0].getLocation().getLat()*a[0].getWeight());
-		//		System.out.println(a[0].getWeight());
-		//		System.out.println(a[1].getWeight());
-		//		System.out.println(a[2].getWeight());
-		//		System.out.println();
-
 		point2.setLat(a[1].getLocation().getLat()*a[1].getWeight());
 		point3.setLat(a[2].getLocation().getLat()*a[2].getWeight());
 		point1.setLon(a[0].getLocation().getLon()*a[0].getWeight());
