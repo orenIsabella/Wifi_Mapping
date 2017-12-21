@@ -3,7 +3,12 @@ package algorithems;
 import java.util.Comparator;
 
 import dataBase.A_Point;
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ *
+ *@category weight comperator
+ */
 public class Weight_Comperator implements Comparator<A_Point> {
 
 	@Override

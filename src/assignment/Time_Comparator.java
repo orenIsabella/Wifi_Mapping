@@ -3,7 +3,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ *@category time comparator
+ *
+ */
 
 public class Time_Comparator implements Comparator<Network>  {
 

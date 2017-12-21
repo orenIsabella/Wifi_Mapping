@@ -9,9 +9,20 @@ import java.util.List;
 
 import assignment.Point3D;
 
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ *
+ *@category converts the output to a type Networks
+ */
 public class Output2Networks {
 
+	
+	/**
+	 * @category adds path to nets
+	 * @param path
+	 * @param nets
+	 */
 	public  void add(String path,ArrayList<A_Point> nets){
 
 
@@ -51,7 +62,11 @@ public class Output2Networks {
 
 		}
 	}
-	
+	/**
+	 * @category converts a List<String> a to a point
+	 * @param a
+	 * @return curr
+	 */
 
 private A_Point addA(List<String> a){
    A_Point curr = new A_Point();
@@ -62,7 +77,11 @@ private A_Point addA(List<String> a){
 	curr.setNets(addN(a));
 	return curr;
 }
-	
+	/**
+	 * @category adds a List<String> to currs
+	 * @param a
+	 * @return ArrayList<Network>
+	 */
 private ArrayList<Network> addN(List<String> a){
 	ArrayList<Network> currs=new ArrayList<Network>();
 	for(int j=0;j<Integer.parseInt(a.get(5));j++){

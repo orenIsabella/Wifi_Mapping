@@ -5,19 +5,33 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ * 
+ * ToCsv class converts the data to a CSV file
+ */
 public class ToCsv {
 	/**
-	 * @author arbel and isabella
-	 * toCSV() using PrintWriter from java.io to write the final networks 
-	 * that we get from Final_Order method into 
-	 *  lines and adding the matching headline witch formed a .csv file.
+	 * @author Isabella Oren
+	 * @author Arbel Nathan
+	 * 
+	 * the constructor
 	 */
 
 	public ToCsv(String destinationFolder, ArrayList<ArrayList<String>> inputArr) {
 		DestinationFolder = destinationFolder;
 		InputArr = inputArr;
 	}
+
+	/**
+	 * @author Isabella Oren
+	 * @author Arbel Nathan
+	 * 
+	 * toCSV() uses PrintWriter from java.io to write the final networks 
+	 * that we get from Final_Order method into 
+	 *  lines and adding the matching headline witch formed a .csv file.
+	 */
 
 	public  void toCSV(){
 		PrintWriter pw=null;;

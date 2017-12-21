@@ -3,8 +3,19 @@ package assignment;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ *@category this class filteres the data
+ *
+ */
 public class Filter {
+/**
+ * @category filters the data by the given filter 
+ * @param filter
+ * @param currentcsv
+ * @param theFilter
+ */
 	private static void changeByFilter(String filter, List<ArrayList<String>> currentcsv, String theFilter){
 		if(filter.equals("id")){
 			Predicate<ArrayList<String>> id=s -> s.get(1).contains(theFilter);
@@ -24,6 +35,12 @@ public class Filter {
 		}
 
 	}
+	/**
+	 *@category filteres the data by the filter given
+	 * @param data
+	 * @param term
+	 * @return out
+	 */
 	private static List<ArrayList<String>> filterby(List<ArrayList<String>> data, Predicate<ArrayList<String>> term)
 	{
 		

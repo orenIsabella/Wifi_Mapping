@@ -14,7 +14,9 @@ public class ScanOrder {
 		this.nets = nets;
 		DestinationFolder=dest;
 	}
-	
+	/**
+	 * @category puts the networks in order by time and creates a csv file
+	 */
 	public void order(){
 		nets.getNetworks().sort(COMP_By_TIME);
 		String time="";
@@ -45,6 +47,9 @@ public class ScanOrder {
 	}
 	
 	// ************** Private *******************
+	/**
+	 * @category adds a net to final networks
+	 */
 	private  void addNetToFinal_Networks(){
 		int count;
 		if(Network_Per_Time.size()+1>10)
@@ -59,6 +64,11 @@ public class ScanOrder {
 		}
 
 	}
+	/**
+	 * @category converts a network to a line
+	 * @param a
+	 * @return ArrayList<String>
+	 */
 	private ArrayList<String> toline(Network a){
 		ArrayList<String> temp=new ArrayList<String>();
 		temp.add(a.getTime());
@@ -72,7 +82,10 @@ public class ScanOrder {
 		temp.add(Integer.toString(a.getSign()));
 		return temp;
 	}
-	
+	/**
+	 * @category adds a network to the time we recieve
+	 * @param k
+	 */
 	private  void addNetToNetwork_Per_Time(int k){
 		ArrayList<String> temp=new ArrayList<String>();
 			temp.add(nets.getNetworks().get(k).getSsid());
@@ -81,6 +94,9 @@ public class ScanOrder {
 			temp.add(Integer.toString(nets.getNetworks().get(k).getSign()));
 		Network_Per_Time.add(temp);
 	}
+	/**
+	 * @category sorts the networks in such a way that the 10 strongest are on top
+	 */
 	private  void topTen (){
 		Network_Per_Time.sort(COMP_By_SIGNAL);
 		NetCounter=Math.max(NetCounter, Network_Per_Time.size()+1);
@@ -93,6 +109,9 @@ public class ScanOrder {
 			}
 		}
 	}
+	/**
+	 * @category creates a headline line
+	 */
 	private  void Head(){
 		HeadLine.add("Time");
 		HeadLine.add("ID");
@@ -109,6 +128,10 @@ public class ScanOrder {
 			HeadLine.add("Signal"+i);
 		}
 	}
+	/**
+	 * @category returns the final networks
+	 * @return ArrayList<ArrayList<String>> final_networks
+	 */
 	public ArrayList<ArrayList<String>> getFinal_Networks() {
 		return Final_Networks;
 	}

@@ -2,7 +2,12 @@ package assignment;
 
 
 import java.util.Comparator;
-
+/**
+ * @author Arbel Nathen
+ * @author Isabella Oren
+ *@category signal comparator for the second assingment
+ *
+ */
 public class Signal_Comp2 implements Comparator<Network> {
 
 	@Override

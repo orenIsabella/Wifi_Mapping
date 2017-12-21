@@ -65,7 +65,10 @@ public class CreateNets {
 		}
 	
 	}
-	
+	/**
+	 * @category adds the current line
+	 * @param currentLine
+	 */
 	public void add(List<String> currentLine){
 		Network net=new Network();
 		net.setTime(currentLine.get(3));
@@ -81,16 +84,29 @@ public class CreateNets {
 		if(chackValid(net))
 			nets.add(net);
 		}
+	/**
+	 * @category adds Id
+	 * @param currentLine
+	 */
 	public void addId(List<String> currentLine){
 		ID = currentLine.get(4).split("=")[1];
 	}
 
+	/**
+	 * @category changes the frequancy to the correct one
+	 * @param curr
+	 */
 	private static void ChanToFreq(Network curr){
 		if(curr.getFreq()!=0)
 			if(curr.getFreq()<12)
 				curr.setFreq(2.4);
 			else curr.setFreq(5);
 	}
+	/**
+	 * @category checks if valid
+	 * @param curr
+	 * @return true or false
+	 */
 	private static boolean chackValid(Network curr) {
 		boolean flag=true;
 		if(!(curr.getMac().contains(":"))||curr.getTime().length()!=19)
@@ -110,7 +126,10 @@ public class CreateNets {
 		return flag;
 	}
 	
-
+/**
+ * 
+ * @return nets
+ */
 	public ArrayList<Network> getNets() {
 		return nets;
 	}

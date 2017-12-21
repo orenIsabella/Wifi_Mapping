@@ -6,7 +6,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ *
+ *@category class of tests
+ */
 public class Tests {
 	public static void main(String[] args)  {
 

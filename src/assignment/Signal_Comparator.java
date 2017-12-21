@@ -3,7 +3,11 @@ package assignment;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ *@category signal comparator
+ */
 public class Signal_Comparator implements Comparator<ArrayList<String>> {
 	
 

@@ -4,17 +4,29 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ * @category this class takes the networks we are working with and converts them to ArrayList
+ *
+ */
 public class toArrayList {
+	
 	private Networks nets=new Networks();
 	private String DestinationFolder;
-
+/**
+ * @category constructor
+ * @param destinationFolder
+ * @param nets
+ */
 	public toArrayList(String destinationFolder,Networks nets) {
 		this.nets = nets;
 		DestinationFolder = destinationFolder;
 	}
 	
-
+/**
+ * @category creates a CSV file with the needed data
+ */
 	public  void toCSV(){
 		PrintWriter pw=null;;
 		try {
@@ -33,7 +45,11 @@ public class toArrayList {
 		pw.close();
 
 	}
-	
+	/**
+	 * @category converts a point to a line
+	 * @param a
+	 * @return ArrayList<String> line
+	 */
 	private ArrayList<String> conv_line(A_Point a){
 		ArrayList<String> line=new ArrayList<String>();
 		line.add(a.getTime());
