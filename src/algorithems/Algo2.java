@@ -27,7 +27,7 @@ public class Algo2 {
 		for(int i=0;i<Comp.size();i++){
 			Comp.getNetworks().get(i).setLocation(simNets(Comp.getNetworks().get(i)));
 		}//export to csv 
-		toArrayList b=new toArrayList("C:/Users/arbel/Desktop/alg2.csv", Comp);
+		toArrayList b=new toArrayList("C:/Users/Student/Desktop/alg2.csv", Comp);
 		b.toCSV();
 	}
 	//comparing every line in the Data (file without the ???) to the line we sent to him
@@ -203,7 +203,7 @@ public class Algo2 {
 	//calculating pi
 	private double comper(Network comp,Network data){
 		int diff=0;
-		if(comp.getMac().equals(data.getMac())){
+		if(-120<data.getSign()){
 			diff=Math.max(3,Math.abs(Math.abs(comp.getSign())-Math.abs(data.getSign())));
 		}else diff=100;
 		double weight=(norm/(Math.pow(diff,sig_diff )*Math.pow(comp.getSign(),power )));
