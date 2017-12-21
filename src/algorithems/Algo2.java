@@ -8,7 +8,11 @@ import dataBase.A_Point;
 import dataBase.Network;
 import dataBase.Networks;
 import dataBase.toArrayList;
-
+/**
+ * @author Arbel Nathan
+ * @author Isabella Oren
+ * @category algo2
+ */
 public class Algo2 {
 	private int	power=	2,
 			norm =10000;
@@ -17,12 +21,19 @@ public class Algo2 {
 	private Networks Comp=new Networks();
 	private Weight_Comperator comper=new Weight_Comperator();
 
-
+/**
+ * @category constructor
+ * @param Data2
+ * @param comp2
+ */
 	public Algo2(String Data2, String comp2) {
 		Data1.addFromInput(Data2);
 		Comp.addFromInput(comp2);
 	}
-	//sending every line from the file with the ??? to find it's location
+	
+	/**
+	 * @category sending every line from the file with the ??? to find it's location
+	 */
 	public void algo2(){
 		for(int i=0;i<Comp.size();i++){
 			Comp.getNetworks().get(i).setLocation(simNets(Comp.getNetworks().get(i)));
@@ -30,9 +41,15 @@ public class Algo2 {
 		toArrayList b=new toArrayList("C:/Users/Student/Desktop/alg2.csv", Comp);
 		b.toCSV();
 	}
-	//comparing every line in the Data (file without the ???) to the line we sent to him
-	//checking first if there any similar MACs between them and sending to find the similarity level
-	//foe every one.
+	
+	
+	/**
+	 *
+	 * comparing every line in the Data (file without the ???) to the line we sent to him
+	 * checking first if there any similar MACs between them and sending to find the similarity level for every one.
+	 * @param a
+	 * @return Point3D
+	 */
 	private Point3D simNets(A_Point a){
 		//System.out.println(a.toString());
 		Networks Data=new Networks(Data1);
@@ -201,6 +218,12 @@ public class Algo2 {
 	}
 
 	//calculating pi
+	/**
+	 * 
+	 * @param comp
+	 * @param data
+	 * @return weight
+	 */
 	private double comper(Network comp,Network data){
 		int diff=0;
 		if(-120<data.getSign()){
@@ -211,6 +234,11 @@ public class Algo2 {
 		return weight;
 
 	}
+	/**
+	 * @category calculating the final point with the 3 networks that have the highest weight
+	 * @param a
+	 * @return
+	 */
 	//calculating the final point with the 3 networks that have the highest weight
 	private Point3D weight(A_Point a[]){
 		Point3D point1=new Point3D();
