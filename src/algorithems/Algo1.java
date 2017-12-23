@@ -3,7 +3,6 @@ package algorithems;
 import java.util.ArrayList;
 
 import assignment.Point3D;
-import assignment.Signal_Comp2;
 import assignment.ToCsv;
 import dataBase.Networks;
 
@@ -33,8 +32,6 @@ public class Algo1 {
 		nets.addFromInput("C:/Users/Student/Desktop/_comb_all_BM2_.csv");
 		FilterByMac filtered=new FilterByMac();
 		filtered.filter(mac,  nets);
-		Signal_Comp2 comp= new Signal_Comp2();
-	//	nets.getNetworks().sort(comp);
 		double mone=0.0;
 		double mechane=0.0;
 		for(int i=0; i<nets.size(); i++)
