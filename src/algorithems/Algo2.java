@@ -1,8 +1,6 @@
 package algorithems;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import assignment.Point3D;
 import dataBase.A_Point;
 import dataBase.Network;
