@@ -89,7 +89,7 @@ public class A_Point {
 	}
 	public boolean equals(A_Point a) {
 		if(a.getID()==this.ID&&
-				a.getLocation()==this.location&&
+				a.getLocation().equals(this.location)&&
 				a.getTime()==this.Time)
 			return true;
 		else return false;
