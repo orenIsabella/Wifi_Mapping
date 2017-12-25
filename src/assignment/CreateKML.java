@@ -7,7 +7,8 @@ import java.util.function.Predicate;
 
 import javax.print.Doc;
 
-
+import dataBase.Networks;
+import dataBase.toArrayList;
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.KmlFactory;
@@ -25,13 +26,13 @@ public class CreateKML {
 	private  Double Lon =0.0;
 	private  Double Alt =0.0;
 	private String dest;
-	private All_Networks nets;
+	private Networks nets;
 	/**
 	 * @category constructor
 	 * @param nets
 	 * @param dest
 	 */
-	public CreateKML(All_Networks nets, String dest) {
+	public CreateKML(Networks nets, String dest) {
 		this.dest = dest;
 		this.nets = nets;
 	}
@@ -41,8 +42,8 @@ public class CreateKML {
 	 * @category creates a KML file with a timeline
 	 */
 	public void createTheKmlFile() {
-		ScanOrder a=new ScanOrder(nets,"ScanInput/csvKML.csv");	
-		a.order();
+		toArrayList b=new toArrayList("ScanInput/csvKML.csv",nets);
+		b.toCSV();
 		final Kml kml=new Kml();
 		de.micromata.opengis.kml.v_2_2_0.Document doc = kml.createAndSetDocument();
 		try {
