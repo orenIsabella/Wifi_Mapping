@@ -1,6 +1,6 @@
 package filter;
 
-import assignment.All_Networks;
+import dataBase.Networks;
 /**
  * 
  * @author Isabella Oren
@@ -19,17 +19,17 @@ public class Filter_By_ID {
 	 * @param nets
 	 * 
 	 */
-	public void filter(String ID,All_Networks nets) {
+	public void filter(String ID,Networks nets) {
 		int place=0;
 		while(place<nets.size()) {
-			if(!(nets.getNetworks().get(place).getId().equals(ID))) {
+			if(!(nets.getNetworks().get(place).getID().matches(ID))) {
 				nets.getNetworks().remove(place);
 				place--;
 			}
 			place++;
 		}
-		
-	}
+		}
 	
 	
 }
+ 

@@ -1,6 +1,7 @@
 package filter;
 
-import assignment.All_Networks;
+
+import dataBase.Networks;
 /**
  * 
  * @author Isabella Oren
@@ -20,17 +21,16 @@ public class Filter_By_Time {
 	 * @param nets
 	 * 
 	 */
-	public void filter(String time,All_Networks nets) {
+	public void filter(String time,Networks nets) {
 		int place=0;
 		while(place<nets.size()) {
-			if(!(nets.getNetworks().get(place).getTime().equals(time))) {
+			if(!(nets.getNetworks().get(place).getTime().matches(time))) {
 				nets.getNetworks().remove(place);
 				place--;
 			}
 			place++;
 		}
-
-	}
+		}
 
 
 }
