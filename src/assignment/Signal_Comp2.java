@@ -2,6 +2,8 @@ package assignment;
 
 
 import java.util.Comparator;
+
+import dataBase.Network;
 /**
  * @author Arbel Nathen
  * @author Isabella Oren

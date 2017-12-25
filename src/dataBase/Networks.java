@@ -33,6 +33,11 @@ public void addFromInput(String path){
 	Output2Networks a=new Output2Networks();
 	a.add(path, Networks);
 }
+
+public void addFromWiggle(String path){
+	Wigle2Networks a=new Wigle2Networks();
+	a.add(path, Networks);
+}
 /**
  * 
  * @return networks
