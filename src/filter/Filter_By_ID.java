@@ -11,13 +11,11 @@ import dataBase.Networks;
 public class Filter_By_ID implements Filter{
 	private boolean flag=true;
 	private String ID;
-	private Networks nets;
-	
-	
-	public Filter_By_ID(String iD, Networks nets) {
+
+
+	public Filter_By_ID(String iD) {
 		super();
 		ID = iD;
-		this.nets = nets;
 	}
 
 	/**
@@ -30,22 +28,27 @@ public class Filter_By_ID implements Filter{
 	 * @param nets
 	 * 
 	 */
-	public void filter() {
+	public void filter(Networks nets) {
 		int place=0;
 		while(place<nets.size()) {
-			if(flag&&!(nets.getNetworks().get(place).getID().matches(ID))) {
+			if(flag) {if(!(nets.getNetworks().get(place).getID().matches(ID))) {
 				nets.getNetworks().remove(place);
 				place--;
 			}
+			}else {
+				if((nets.getNetworks().get(place).getID().matches(ID))) {
+					nets.getNetworks().remove(place);
+					place--;
+				}
+			}
 			place++;
 		}
-		}
-	
+	}
+
 	public void setFlag(boolean flag) {
 		this.flag = flag;
 	}
-	
-	
-	
+
+
+
 }
- 

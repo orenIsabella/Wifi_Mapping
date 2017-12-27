@@ -13,12 +13,12 @@ import dataBase.Networks;
 public class Filter_By_location implements Filter {
 	private boolean flag=true;
 	private Point3D point;
-	private Networks nets;
-	
-	
-	public Filter_By_location(Point3D point, Networks nets) {
+
+
+
+	public Filter_By_location(Point3D point) {
 		this.point = point;
-		this.nets = nets;
+
 	}
 
 	/**
@@ -31,19 +31,27 @@ public class Filter_By_location implements Filter {
 	 * @param nets
 	 * 
 	 */
-	public void filter() {
+	public void filter(Networks nets) {
 		int place=0;
 		while(place<nets.size()) {
-			if(flag&&!(nets.getNetworks().get(place).getLocation().equals(point))) {
-				nets.getNetworks().remove(place);
-				place--;
+			if(flag) {
+				if(!(nets.getNetworks().get(place).getLocation().equals(point))) {
+					nets.getNetworks().remove(place);
+					place--;
+				}
+			}
+			else {
+				if((nets.getNetworks().get(place).getLocation().equals(point))) {
+					nets.getNetworks().remove(place);
+					place--;
+				}
 			}
 			place++;
 		}
-		}
+	}
 
 	public void setFlag(boolean flag) {
 		this.flag = flag;
-	
-}
+
+	}
 }

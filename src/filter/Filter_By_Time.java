@@ -13,13 +13,13 @@ public class Filter_By_Time implements Filter {
 
 	private boolean flag=true;
 	private String time;
-	private Networks nets;
 
-	
-	
-	public Filter_By_Time(String time, Networks nets) {
+
+
+
+	public Filter_By_Time(String time) {
 		this.time = time;
-		this.nets = nets;
+
 	}
 
 	/**
@@ -32,22 +32,30 @@ public class Filter_By_Time implements Filter {
 	 * @param nets
 	 * 
 	 */
-	public void filter() {
+	public void filter(Networks nets) {
 		int place=0;
 		while(place<nets.size()) {
-			if(flag&&!(nets.getNetworks().get(place).getTime().matches(time))) {
-				nets.getNetworks().remove(place);
-				place--;
+			if(flag) {
+				if(!(nets.getNetworks().get(place).getTime().matches(time))) {
+					nets.getNetworks().remove(place);
+					place--;
+				}
+			}
+			else {
+				if((nets.getNetworks().get(place).getTime().matches(time))) {
+					nets.getNetworks().remove(place);
+					place--;
+				}
 			}
 			place++;
 		}
-		}
+	}
 
 	public void setFlag(boolean flag) {
 		this.flag = flag;
 
-}
+	}
 }
 
-	
+
 
