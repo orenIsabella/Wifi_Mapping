@@ -1,10 +1,14 @@
 package filter;
 
-public class Not_Filter {
+import java.io.Serializable;
 
-	public void  not(Filter a) {
+import dataBase.Networks;
+
+public class Not_Filter implements Serializable{
+
+	public void  not(Filter a,Networks nets) {
 		a.setFlag(false);
-		a.filter();
+		a.filter(nets);
 		
 	}
 	
