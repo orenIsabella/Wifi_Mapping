@@ -2,7 +2,7 @@ package filter;
 
 import dataBase.Networks;
 
-public class Or_filter {
+public class Or_Filter {
 
 	public void  Or(Filter a,Filter b,Networks nets) {
 		Networks temp1=new Networks(nets);
