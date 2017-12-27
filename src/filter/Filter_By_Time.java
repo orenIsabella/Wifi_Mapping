@@ -1,7 +1,7 @@
 package filter;
 
-
 import dataBase.Networks;
+
 /**
  * 
  * @author Isabella Oren
@@ -9,7 +9,18 @@ import dataBase.Networks;
  *
  * @category The class Filter_By_Time filters the data we received by the time wanted.
  */
-public class Filter_By_Time {
+public class Filter_By_Time implements Filter {
+
+	private boolean flag=true;
+	private String time;
+	private Networks nets;
+
+	
+	
+	public Filter_By_Time(String time, Networks nets) {
+		this.time = time;
+		this.nets = nets;
+	}
 
 	/**
 	 * @author Isabella Oren
@@ -21,10 +32,10 @@ public class Filter_By_Time {
 	 * @param nets
 	 * 
 	 */
-	public void filter(String time,Networks nets) {
+	public void filter() {
 		int place=0;
 		while(place<nets.size()) {
-			if(!(nets.getNetworks().get(place).getTime().matches(time))) {
+			if(flag&&!(nets.getNetworks().get(place).getTime().matches(time))) {
 				nets.getNetworks().remove(place);
 				place--;
 			}
@@ -32,5 +43,11 @@ public class Filter_By_Time {
 		}
 		}
 
+	public void setFlag(boolean flag) {
+		this.flag = flag;
 
 }
+}
+
+	
+
