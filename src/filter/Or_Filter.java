@@ -4,7 +4,14 @@ import dataBase.Networks;
 
 public class Or_Filter {
 
-	public void  Or(Filter a,Filter b,Networks nets) {
+	private Filter a, b;
+
+	public Or_Filter(Filter a, Filter b) {
+		this.a = a;
+		this.b = b;
+	}
+
+	public void  Or(Networks nets) {
 		Networks temp1=new Networks(nets);
 		Networks temp2=new Networks(nets);
 		Networks temp3=new Networks();
