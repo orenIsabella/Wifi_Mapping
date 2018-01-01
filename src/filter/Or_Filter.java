@@ -1,8 +1,10 @@
 package filter;
 
+import java.io.Serializable;
+
 import dataBase.Networks;
 
-public class Or_Filter {
+public class Or_Filter implements Serializable{
 
 	private Filter a, b;
 
