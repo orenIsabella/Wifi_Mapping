@@ -1,11 +1,14 @@
 package assignment;
+
+import java.io.Serializable;
+
 /**
  * @author Arbel Nathan
  * @author Isabella Oren
  * @category represents a Point
  *
  */
-public class Point3D {
+public class Point3D implements Serializable {
 	private double Lat,Lon,Alt;
 /**
  * @category constructor for Point3D
