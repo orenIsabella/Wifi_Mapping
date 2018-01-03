@@ -18,7 +18,7 @@ private ArrayList<A_Point> Networks=new ArrayList<A_Point>();
  * @param networks
  */
 public Networks(Networks networks) {
-	Networks = networks.getNetworks();
+	Networks.addAll(networks.getNetworks());
 }
 /**
  * @category a constuctor
