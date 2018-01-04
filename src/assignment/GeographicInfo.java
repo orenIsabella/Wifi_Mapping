@@ -12,7 +12,8 @@ public class GeographicInfo {
 	//CreateKML a=new CreateKML("ScanInput","C:/Users/arbel/Desktop/kml.kml");	
 	//	a.createTheKmlFile();
 	//	ScanOrder a=new ScanOrder(nets,"C:/Users/arbel/Desktop/csv11.csv");	
-		a.order();
+	//	a.order();
+		System.out.println("20/9".compareTo("20/5"));
 	}
 
 	
