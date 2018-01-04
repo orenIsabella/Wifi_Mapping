@@ -51,7 +51,7 @@ public class wifiMapping {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 639, 462);
+		frame.setBounds(100, 100, 640, 616);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
