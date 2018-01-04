@@ -199,7 +199,8 @@ public class wifiMapping  extends Thread {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//here we need to save all our database to a combined csv file
-				toArrayList help=new toArrayList(destinationFolder+"/a.csv", net);
+				String destination=JOptionPane.showInputDialog("Please enter file destination");
+				toArrayList help=new toArrayList(destination+"/a.csv", net);
 				help.toCSV();
 
 			}
@@ -213,7 +214,8 @@ public class wifiMapping  extends Thread {
 			public void actionPerformed(ActionEvent e) {
 				//here we need to save all our database to a combined KML file
 				//	toArrayList h=new toArrayList(destinationFolder, net);
-				CreateKML n=new CreateKML(net,destinationFolder+"/a.kml");
+				String destination=JOptionPane.showInputDialog("Please enter file destination");
+				CreateKML n=new CreateKML(net,destination+"/a.kml");
 				n.createTheKmlFile();
 			}
 		});
