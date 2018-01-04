@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import javax.swing.JEditorPane;
 
 public class wifiMapping {
 
@@ -71,7 +72,7 @@ public class wifiMapping {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 443, 975);
+		frame.setBounds(100, 100, 844, 604);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -178,16 +179,6 @@ public class wifiMapping {
 		btnSavefilter.setBounds(211, 165, 175, 98);
 		frame.getContentPane().add(btnSavefilter);
 
-		JButton btnCreateFilter = new JButton("Create Filter");
-		btnCreateFilter.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//here we need to add an option to create a filter by using and or not
-			}
-		});
-		btnCreateFilter.setBackground(new Color(204, 204, 255));
-		btnCreateFilter.setBounds(211, 279, 175, 92);
-		frame.getContentPane().add(btnCreateFilter);
-
 		JButton btnAlgo = new JButton("Algo1");
 		btnAlgo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -259,7 +250,7 @@ public class wifiMapping {
 			}
 		});
 		btnAlgo_1.setBackground(new Color(255, 204, 255));
-		btnAlgo_1.setBounds(211, 395, 167, 125);
+		btnAlgo_1.setBounds(219, 395, 167, 125);
 		frame.getContentPane().add(btnAlgo_1);
 		
 		JSeparator separator = new JSeparator();
@@ -271,66 +262,66 @@ public class wifiMapping {
 		frame.getContentPane().add(separator_1);
 		
 		JLabel lblCustomizeTheFilter = new JLabel("Customize the Filter:");
-		lblCustomizeTheFilter.setBounds(22, 544, 356, 29);
+		lblCustomizeTheFilter.setBounds(418, 28, 356, 29);
 		frame.getContentPane().add(lblCustomizeTheFilter);
 		
 		JLabel lblNot = new JLabel("NOT");
 		lblNot.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNot.setBounds(22, 575, 36, 29);
+		lblNot.setBounds(414, 69, 36, 29);
 		frame.getContentPane().add(lblNot);
 		
 		JRadioButton radioButton = new JRadioButton("");
-		radioButton.setBounds(22, 624, 36, 29);
+		radioButton.setBounds(418, 118, 36, 29);
 		frame.getContentPane().add(radioButton);
 		
 		JRadioButton radioButton_1 = new JRadioButton("");
-		radioButton_1.setBounds(22, 680, 36, 29);
+		radioButton_1.setBounds(418, 202, 36, 29);
 		frame.getContentPane().add(radioButton_1);
 		
 		JRadioButton radioButton_2 = new JRadioButton("");
-		radioButton_2.setBounds(18, 756, 36, 29);
+		radioButton_2.setBounds(418, 302, 36, 29);
 		frame.getContentPane().add(radioButton_2);
 		
 		JRadioButton radioButton_3 = new JRadioButton("");
-		radioButton_3.setBounds(22, 842, 36, 29);
+		radioButton_3.setBounds(418, 437, 36, 29);
 		frame.getContentPane().add(radioButton_3);
 		
 		JLabel lblId = new JLabel("ID");
 		lblId.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblId.setBounds(74, 597, 29, 30);
+		lblId.setBounds(472, 102, 29, 30);
 		frame.getContentPane().add(lblId);
 		
 		textField = new JTextField();
-		textField.setBounds(58, 627, 115, 22);
+		textField.setBounds(472, 125, 115, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblTime = new JLabel("Time");
 		lblTime.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTime.setBounds(68, 651, 104, 29);
+		lblTime.setBounds(472, 173, 104, 29);
 		frame.getContentPane().add(lblTime);
 		
 		txtMin = new JTextField();
 		txtMin.setText("min");
-		txtMin.setBounds(58, 675, 56, 34);
+		txtMin.setBounds(472, 197, 56, 34);
 		frame.getContentPane().add(txtMin);
 		txtMin.setColumns(10);
 		
 		txtMax = new JTextField();
 		txtMax.setText("max");
-		txtMax.setBounds(117, 675, 56, 34);
+		txtMax.setBounds(531, 197, 56, 34);
 		frame.getContentPane().add(txtMax);
 		txtMax.setColumns(10);
 		
 		JLabel lblLocation = new JLabel("Location");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblLocation.setBounds(58, 724, 66, 29);
+		lblLocation.setBounds(472, 267, 66, 29);
 		frame.getContentPane().add(lblLocation);
 		
 		txtMinLat = new JTextField();
 		txtMinLat.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtMinLat.setText("min lat");
-		txtMinLat.setBounds(58, 756, 56, 30);
+		txtMinLat.setBounds(472, 301, 56, 30);
 		frame.getContentPane().add(txtMinLat);
 		txtMinLat.setColumns(10);
 		
@@ -338,57 +329,57 @@ public class wifiMapping {
 		txtMaxLat.setText("max lat");
 		txtMaxLat.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtMaxLat.setColumns(10);
-		txtMaxLat.setBounds(117, 756, 66, 30);
+		txtMaxLat.setBounds(531, 301, 66, 30);
 		frame.getContentPane().add(txtMaxLat);
 		
 		txtMinLon = new JTextField();
 		txtMinLon.setText("min lon");
 		txtMinLon.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtMinLon.setColumns(10);
-		txtMinLon.setBounds(58, 788, 56, 30);
+		txtMinLon.setBounds(472, 342, 56, 30);
 		frame.getContentPane().add(txtMinLon);
 		
 		txtMaxLon = new JTextField();
 		txtMaxLon.setText("max lon");
 		txtMaxLon.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtMaxLon.setColumns(10);
-		txtMaxLon.setBounds(117, 788, 66, 30);
+		txtMaxLon.setBounds(531, 342, 66, 30);
 		frame.getContentPane().add(txtMaxLon);
 		
 		JCheckBox chckbxUse = new JCheckBox("");
-		chckbxUse.setBounds(194, 620, 36, 37);
+		chckbxUse.setBounds(588, 118, 36, 37);
 		frame.getContentPane().add(chckbxUse);
 		
 		JCheckBox checkBox = new JCheckBox("");
-		checkBox.setBounds(194, 675, 36, 37);
+		checkBox.setBounds(594, 194, 36, 37);
 		frame.getContentPane().add(checkBox);
 		
 		JCheckBox checkBox_1 = new JCheckBox("");
-		checkBox_1.setBounds(194, 756, 36, 37);
+		checkBox_1.setBounds(607, 294, 36, 37);
 		frame.getContentPane().add(checkBox_1);
 		
 		JLabel lblUploadFromSaved = new JLabel("upload from saved files");
 		lblUploadFromSaved.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblUploadFromSaved.setBounds(58, 815, 140, 29);
+		lblUploadFromSaved.setBounds(472, 407, 140, 29);
 		frame.getContentPane().add(lblUploadFromSaved);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(58, 842, 123, 30);
+		textField_1.setBounds(474, 437, 123, 30);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
 		JCheckBox checkBox_2 = new JCheckBox("");
-		checkBox_2.setBounds(194, 839, 36, 37);
+		checkBox_2.setBounds(607, 437, 36, 37);
 		frame.getContentPane().add(checkBox_2);
 		
 		JCheckBox chckbxOr = new JCheckBox("OR");
 		chckbxOr.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		chckbxOr.setBounds(244, 593, 71, 37);
+		chckbxOr.setBounds(640, 167, 71, 37);
 		frame.getContentPane().add(chckbxOr);
 		
 		JCheckBox chckbxAnd = new JCheckBox("AND");
 		chckbxAnd.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		chckbxAnd.setBounds(313, 593, 84, 37);
+		chckbxAnd.setBounds(714, 167, 84, 37);
 		frame.getContentPane().add(chckbxAnd);
 		
 		JButton btnApply = new JButton("APPLY");
@@ -398,7 +389,12 @@ public class wifiMapping {
 			}
 		});
 		btnApply.setBackground(new Color(255, 255, 153));
-		btnApply.setBounds(238, 651, 155, 37);
+		btnApply.setBounds(660, 313, 134, 161);
 		frame.getContentPane().add(btnApply);
+		
+		JEditorPane dtrpnTheData = new JEditorPane();
+		dtrpnTheData.setText("The Data");
+		dtrpnTheData.setBounds(211, 279, 175, 92);
+		frame.getContentPane().add(dtrpnTheData);
 	}
 }
