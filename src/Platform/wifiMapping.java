@@ -42,6 +42,7 @@ public class wifiMapping {
 	private JTextField txtMaxLon;
 	private JTextField textField_1;
 
+
 	/**
 	 * Launch the application.
 	 */
@@ -445,6 +446,11 @@ public class wifiMapping {
 		frame.getContentPane().add(chckbxAnd);
 		
 		JButton btnApply = new JButton("APPLY");
+		btnApply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnApply.setBackground(new Color(255, 255, 153));
 		btnApply.setBounds(238, 651, 155, 37);
 		frame.getContentPane().add(btnApply);
