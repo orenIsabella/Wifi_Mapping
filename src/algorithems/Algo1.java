@@ -7,29 +7,34 @@ import assignment.ToCsv;
 import dataBase.Networks;
 
 public class Algo1 {
-	private static ArrayList<MacPoint> ans=new  ArrayList<MacPoint>();
 	
-	public  void algo1full() {
-		Networks  Data=new Networks();
-		Data.addFromInput("C:/Users/Student/Desktop/_comb_all_BM2_.csv");
-		while(Data.size()>0) {
+	private Networks nets=new Networks();
+	private String mac;
+	
+	
+	
+	public Algo1(Networks nets, String mac) {
+		
+		this.nets = nets;
+		this.mac = mac;
+	}
+
+
+
+	public Point3D algo1full() {
+	
 				MacPoint temp=new MacPoint();
-				String mac=Data.getNetworks().get(0).getNets().get(0).getMac();
 				temp.setMac(mac);
 				temp.setLocation(algo1(mac));
-				ans.add(temp);
-				FilterByMacRev filtered=new FilterByMacRev();
-				filtered.filter(mac, Data);
-			}
-		print();
+		
+			
+		return temp.getLocation();
 	}
 	
 
 	
-	private static Point3D algo1(String mac) {
+	private  Point3D algo1(String mac) {
 		Point3D w=new Point3D();
-		Networks  nets=new Networks();
-		nets.addFromInput("C:/Users/Student/Desktop/_comb_all_BM2_.csv");
 		FilterByMac filtered=new FilterByMac();
 		filtered.filter(mac,  nets);
 		double mone=0.0;
@@ -64,20 +69,6 @@ public class Algo1 {
 		return w;
 	}
 	
-	private void print() {
-		ArrayList<ArrayList<String>> p=new ArrayList<ArrayList<String>>();
-		for(int i=0;i<ans.size();i++) {
-			ArrayList<String> s=new ArrayList<String>();
-			s.add(ans.get(i).getMac());
-			s.add(Double.toString(ans.get(i).getLocation().getLat()));
-			s.add(Double.toString(ans.get(i).getLocation().getLon()));
-			s.add(Double.toString(ans.get(i).getLocation().getAlt()));
-			p.add(s);
-		}
-			ToCsv print=new ToCsv("C:/Users/Student/Desktop/check.csv",p);
-			print.toCSV();
-			
-	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

@@ -12,13 +12,13 @@ public class Point3D implements Serializable {
 	private double Lat,Lon,Alt;
 /**
  * @category constructor for Point3D
- * @param lan
+ * @param lat
  * @param lon
  * @param alt
  */
-	public Point3D(double lan, double lon, double alt) {
+	public Point3D(double lat, double lon, double alt) {
 		super();
-		this.Lat = lan;
+		this.Lat = lat;
 		this.Lon = lon;
 		this.Alt = alt;
 	}
@@ -107,7 +107,7 @@ public class Point3D implements Serializable {
 	 * @category toString
 	 */
 	public String toString() {
-		return "Point3D [Lat=" + Lat + ", Lon=" + Lon + ", Alt=" + Alt + "]";
+		return "Lat=" + Lat + ", Lon=" + Lon + ", Alt=" + Alt ;
 	}
 	
 }
