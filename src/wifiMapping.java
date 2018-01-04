@@ -212,7 +212,7 @@ public class wifiMapping {
 			public void actionPerformed(ActionEvent e) {
 				String option1 = null;
 				JOptionPane.showInputDialog("Please enter yes if you want to use this option by entering a string as a line", option1);
-				if(option1.equalsIgnoreCase("yes")){
+				if(option1.equals("yes")){
 					String line = null;
 					JOptionPane.showInputDialog("Please enter the wanted line", line);
 					//show location using algo2 for the string we recieved
@@ -226,23 +226,35 @@ public class wifiMapping {
 					int n = JOptionPane.showOptionDialog(frame, "How many mac adresses would you like to use?", "mac adresses amount",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,	null, options,options[0]); 
 					if(n==1){
 						String mac1 = null;
-						JOptionPane.showInputDialog("Please enterthe mac adress", mac1);
+						JOptionPane.showInputDialog("Please enter the mac adress", mac1);
+						String sig1 = null;
+						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig1);
 						//use algo2 by this mac adress and show the location as the result
 					}
 					if(n==2){
 						String mac1 = null;
-						JOptionPane.showInputDialog("Please enterthe mac adress", mac1);
+						JOptionPane.showInputDialog("Please enter the mac adress", mac1);
+						String sig1 = null;
+						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig1);
 						String mac2 = null;
-						JOptionPane.showInputDialog("Please enterthe mac adress", mac2);
+						JOptionPane.showInputDialog("Please enter the mac adress", mac2);
+						String sig2 = null;
+						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig2);
 						//use algo2 by this mac adress and show the location as the result
 					}
 					if(n==3){
 						String mac1 = null;
-						JOptionPane.showInputDialog("Please enterthe mac adress", mac1);
+						JOptionPane.showInputDialog("Please enter the mac adress", mac1);
+						String sig1 = null;
+						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig1);
 						String mac2 = null;
-						JOptionPane.showInputDialog("Please enterthe mac adress", mac2);
+						JOptionPane.showInputDialog("Please enter the mac adress", mac2);
+						String sig2 = null;
+						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig2);
 						String mac3 = null;
 						JOptionPane.showInputDialog("Please enterthe mac adress", mac3);
+						String sig3 = null;
+						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig3);
 						//use algo2 by this mac adress and show the location as the result
 					}
 				}
