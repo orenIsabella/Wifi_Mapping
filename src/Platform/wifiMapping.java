@@ -155,60 +155,6 @@ public class wifiMapping {
 		btnShowData.setBounds(22, 334, 167, 37);
 		frame.getContentPane().add(btnShowData);
 
-		JButton btnFilterByTime = new JButton("Filter by Time");
-		btnFilterByTime.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				filtersUsed++;
-				String min = null;
-				JOptionPane.showInputDialog("Please enter the minimum time you want to filter from", min);
-				String max = null;
-				JOptionPane.showInputDialog("Please enter the maximum time you want to filter to", max);
-				//here we need to add a filter from min to max on our database
-			}
-		});
-		btnFilterByTime.setBackground(new Color(204, 204, 255));
-		btnFilterByTime.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnFilterByTime.setBounds(211, 27, 175, 48);
-		frame.getContentPane().add(btnFilterByTime);
-
-		JButton btnFilterByLocation = new JButton("Filter by Location");
-		btnFilterByLocation.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String minlat = null;
-				JOptionPane.showInputDialog("Please enter the minimum lat you want to filter from", minlat);
-				String maxlat = null;
-				JOptionPane.showInputDialog("Please enter the maximum lat you want to filter to", maxlat);
-				String minlon = null;
-				JOptionPane.showInputDialog("Please enter the minimum lat you want to filter from", minlon);
-				String maxlon = null;
-				JOptionPane.showInputDialog("Please enter the maximum lat you want to filter to", maxlon);
-				String minalt = null;
-				JOptionPane.showInputDialog("Please enter the minimum lat you want to filter from", minalt);
-				String maxalt = null;
-				JOptionPane.showInputDialog("Please enter the maximum lat you want to filter to", maxalt);
-				//here we need to add a filter from min to max on our database
-			}
-		});
-		btnFilterByLocation.setBackground(new Color(204, 204, 255));
-		btnFilterByLocation.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnFilterByLocation.setBounds(211, 91, 175, 48);
-		frame.getContentPane().add(btnFilterByLocation);
-
-		JButton btnFilterByDevice = new JButton("Filter by Device");
-		btnFilterByDevice.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String deviceName = null;
-				JOptionPane.showInputDialog("Please enter the device name you want to filter the data by", deviceName);
-				//here we need to add a filter by the deviceName we recieved
-			}
-		});
-		btnFilterByDevice.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnFilterByDevice.setBackground(new Color(204, 204, 255));
-		btnFilterByDevice.setBounds(211, 163, 175, 43);
-		frame.getContentPane().add(btnFilterByDevice);
-
 		JButton btnUndoTheFilter = new JButton("Undo the filter");
 		btnUndoTheFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -218,7 +164,7 @@ public class wifiMapping {
 		});
 		btnUndoTheFilter.setBackground(new Color(204, 204, 255));
 		btnUndoTheFilter.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnUndoTheFilter.setBounds(211, 228, 175, 37);
+		btnUndoTheFilter.setBounds(211, 33, 175, 99);
 		frame.getContentPane().add(btnUndoTheFilter);
 
 		JButton btnSavefilter = new JButton("Save Filter");
@@ -229,7 +175,7 @@ public class wifiMapping {
 			}
 		});
 		btnSavefilter.setBackground(new Color(204, 204, 255));
-		btnSavefilter.setBounds(211, 279, 175, 37);
+		btnSavefilter.setBounds(211, 165, 175, 98);
 		frame.getContentPane().add(btnSavefilter);
 
 		JButton btnCreateFilter = new JButton("Create Filter");
@@ -239,7 +185,7 @@ public class wifiMapping {
 			}
 		});
 		btnCreateFilter.setBackground(new Color(204, 204, 255));
-		btnCreateFilter.setBounds(211, 334, 175, 37);
+		btnCreateFilter.setBounds(211, 279, 175, 92);
 		frame.getContentPane().add(btnCreateFilter);
 
 		JButton btnAlgo = new JButton("Algo1");
@@ -448,7 +394,7 @@ public class wifiMapping {
 		JButton btnApply = new JButton("APPLY");
 		btnApply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+		
 			}
 		});
 		btnApply.setBackground(new Color(255, 255, 153));
