@@ -10,6 +10,9 @@ import java.awt.Component;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import algorithems.Algo2;
+import dataBase.Networks;
+
 public class wifiMapping {
 
 	private JFrame frame;
@@ -215,7 +218,8 @@ public class wifiMapping {
 				if(option1.equals("yes")){
 					String line = null;
 					JOptionPane.showInputDialog("Please enter the wanted line", line);
-					//show location using algo2 for the string we recieved
+					Algo2 alg2 =new Algo2(net,line);
+					alg2.simNets();
 				}
 				else{
 				//	String howmany = null;
@@ -229,7 +233,8 @@ public class wifiMapping {
 						JOptionPane.showInputDialog("Please enter the mac adress", mac1);
 						String sig1 = null;
 						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig1);
-						//use algo2 by this mac adress and show the location as the result
+						Algo2 alg2 =new Algo2(net,mac1,sig1, null, null, null, null);
+						alg2.simNets();
 					}
 					if(n==2){
 						String mac1 = null;
@@ -240,7 +245,8 @@ public class wifiMapping {
 						JOptionPane.showInputDialog("Please enter the mac adress", mac2);
 						String sig2 = null;
 						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig2);
-						//use algo2 by this mac adress and show the location as the result
+						Algo2 alg2 =new Algo2(net,mac1,sig1, mac2,sig2, null, null);
+						alg2.simNets();
 					}
 					if(n==3){
 						String mac1 = null;
@@ -255,7 +261,8 @@ public class wifiMapping {
 						JOptionPane.showInputDialog("Please enterthe mac adress", mac3);
 						String sig3 = null;
 						JOptionPane.showInputDialog("Please enter the signal for the last mac adress", sig3);
-						//use algo2 by this mac adress and show the location as the result
+						Algo2 alg2 =new Algo2(net,mac1,sig1,mac2,sig2, mac3,sig3);
+						alg2.simNets();
 					}
 				}
 			}
