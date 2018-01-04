@@ -89,11 +89,11 @@ public class wifiMapping  extends Thread {
 
 		if( file.lastModified() != timeStamp ) {
 			this.timeStamp = file.lastModified();
-			
+
 			//Yes, file is updated
 			return true;
 		}
-		
+
 		//No, file is not updated
 		return false;
 	}
@@ -109,13 +109,16 @@ public class wifiMapping  extends Thread {
 	public  void thread_1() {
 		file=new File(destinationFolder);
 		timeStamp=file.lastModified();
-		 t1 = new Thread(new Runnable() {
+		t1 = new Thread(new Runnable() {
 			public void run() {
 				while(frame.isDisplayable()) {
-				
+
 					if(isFileUpdated(file)) {
-					int a=JOptionPane.showConfirmDialog(null, "your Input folder has been changed,\n would you like to update your database?");
-						if(a==0) net.addFromWiggle(destinationFolder);
+						int a=JOptionPane.showConfirmDialog(null, "your Input folder has been changed,\n would you like to update your database?");
+						if(a==0) { 
+							net.addFromWiggle(destinationFolder);
+							backup.getNetworks().addAll(net.getNetworks());
+						}
 					}
 					try {
 						Thread.sleep(5000);
@@ -126,7 +129,7 @@ public class wifiMapping  extends Thread {
 				}
 			}
 		});
-			
+
 	}
 	/**
 	 * Initialize the contents of the frame.
@@ -501,7 +504,7 @@ public class wifiMapping  extends Thread {
 					Filter_By_ID temp=new Filter_By_ID(ID.getText());
 					id =temp;
 					toFilter=id;
-				
+
 				}
 				if( checkBox.isSelected()) {
 					System.out.println(txtMin.getText());
