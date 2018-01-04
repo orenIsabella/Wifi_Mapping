@@ -45,10 +45,11 @@ public class Wigle2Networks {
 				 * readLine () function that reads an entire row.
 				 */
 				BufferedReader br = new BufferedReader(fr);
-				
+
 				String currentLine;
 				currentLine = br.readLine();
 				List<String> model=Arrays.asList(currentLine.split(","));
+
 				addId(model);
 				currentLine = br.readLine();
 				currentLine = br.readLine();
@@ -86,107 +87,107 @@ public class Wigle2Networks {
 				nets.get(i).getNets().remove(10);
 		}
 
-		}
+	}
 
 
-		private boolean notCont(A_Point point) {
-			boolean flag=true;
-			if(nets.size()>0)
-				if(point.equals(nets.get(nets.size()-1)))
-					flag= false;
-			
-			return flag;	
-		}
-		private A_Point addA_P(List<String> currentLine){
-			A_Point point=new A_Point();
-			point.setTime(currentLine.get(3));
-			point.setID(ID);
-			point.getLocation().setLat(Double.parseDouble(currentLine.get(6)));
-			point.getLocation().setLon(Double.parseDouble(currentLine.get(7)));
-			point.getLocation().setAlt(Double.parseDouble(currentLine.get(8)));
-			return point;
-		}
-		/**
-		 * @category adds the current line
-		 * @param currentLine
-		 */
-		private Network add_N(List<String> currentLine){
-			Network net=new Network();
-			net.setSsid(currentLine.get(1));
-			net.setMac(currentLine.get(0));
-			net.setFreq(Double.parseDouble(currentLine.get(4)));
-			net.setSign(Integer.parseInt(currentLine.get(5)));
-			ChanToFreq(net);
-			if(chackValid(net)) {
-				return net;
-			}
-			return null;
-		}
-		/**
-		 * @category adds Id
-		 * @param currentLine
-		 */
-		private void addId(List<String> currentLine){
-			ID = currentLine.get(4).split("=")[1];
-		}
+	private boolean notCont(A_Point point) {
+		boolean flag=true;
+		if(nets.size()>0)
+			if(point.equals(nets.get(nets.size()-1)))
+				flag= false;
 
-		/**
-		 * @category changes the frequancy to the correct one
-		 * @param curr
-		 */
-		private static void ChanToFreq(Network curr){
-			if(curr.getFreq()!=0)
-				if(curr.getFreq()<12)
-					curr.setFreq(2.4);
-				else curr.setFreq(5);
-		}
-		/**
-		 * @category checks if valid
-		 * @param curr
-		 * @return true or false
-		 */
-		private static boolean chackValid(Network curr) {
-			boolean flag=true;
-			if(!(curr.getMac().contains(":")))
-				flag=false;
-			if(
-					curr.getSsid().isEmpty()||
-					curr.getMac().isEmpty()||
-					curr.getFreq()==0||
-					curr.getSign()==0
-					)
-				flag=false;
-
-			return flag;
-		}
-		private static boolean chackValid_A_P(A_Point curr2) {
-			boolean flag=true;
-			if(!(curr2.getTime().length()==19))
-				flag=false;
-			if(
-					curr2.getTime().isEmpty()||
-					curr2.getLocation().getLat()==-4000||
-					curr2.getLocation().getLon()==-4000||
-					curr2.getLocation().getAlt()==-4000
-					)
-				flag=false;
-
-			return flag;
-		}
-		/**
-		 * 
-		 * @return nets
-		 */
-		public ArrayList<Network> getNets() {
+		return flag;	
+	}
+	private A_Point addA_P(List<String> currentLine){
+		A_Point point=new A_Point();
+		point.setTime(currentLine.get(3));
+		point.setID(ID);
+		point.getLocation().setLat(Double.parseDouble(currentLine.get(6)));
+		point.getLocation().setLon(Double.parseDouble(currentLine.get(7)));
+		point.getLocation().setAlt(Double.parseDouble(currentLine.get(8)));
+		return point;
+	}
+	/**
+	 * @category adds the current line
+	 * @param currentLine
+	 */
+	private Network add_N(List<String> currentLine){
+		Network net=new Network();
+		net.setSsid(currentLine.get(1));
+		net.setMac(currentLine.get(0));
+		net.setFreq(Double.parseDouble(currentLine.get(4)));
+		net.setSign(Integer.parseInt(currentLine.get(5)));
+		ChanToFreq(net);
+		if(chackValid(net)) {
 			return net;
 		}
-
-
-
-
-		// ************** Private *******************
-		private ArrayList<Network> net=new ArrayList<Network>();
-		private ArrayList<A_Point> nets=new ArrayList<A_Point>();
-		private String ID;
-		private  final Signal_Comp2 COMP_By_SIGNAL = new Signal_Comp2();
+		return null;
 	}
+	/**
+	 * @category adds Id
+	 * @param currentLine
+	 */
+	private void addId(List<String> currentLine){
+		ID = currentLine.get(4).split("=")[1];
+	}
+
+	/**
+	 * @category changes the frequancy to the correct one
+	 * @param curr
+	 */
+	private static void ChanToFreq(Network curr){
+		if(curr.getFreq()!=0)
+			if(curr.getFreq()<12)
+				curr.setFreq(2.4);
+			else curr.setFreq(5);
+	}
+	/**
+	 * @category checks if valid
+	 * @param curr
+	 * @return true or false
+	 */
+	private static boolean chackValid(Network curr) {
+		boolean flag=true;
+		if(!(curr.getMac().contains(":")))
+			flag=false;
+		if(
+				curr.getSsid().isEmpty()||
+				curr.getMac().isEmpty()||
+				curr.getFreq()==0||
+				curr.getSign()==0
+				)
+			flag=false;
+
+		return flag;
+	}
+	private static boolean chackValid_A_P(A_Point curr2) {
+		boolean flag=true;
+		if(!(curr2.getTime().length()>=16)) {
+			flag=false;}
+		if(
+				curr2.getTime().isEmpty()||
+				curr2.getLocation().getLat()==-4000||
+				curr2.getLocation().getLon()==-4000||
+				curr2.getLocation().getAlt()==-4000
+				) {
+			flag=false;
+		}
+		return flag;
+	}
+	/**
+	 * 
+	 * @return nets
+	 */
+	public ArrayList<Network> getNets() {
+		return net;
+	}
+
+
+
+
+	// ************** Private *******************
+	private ArrayList<Network> net=new ArrayList<Network>();
+	private ArrayList<A_Point> nets=new ArrayList<A_Point>();
+	private String ID;
+	private  final Signal_Comp2 COMP_By_SIGNAL = new Signal_Comp2();
+}
