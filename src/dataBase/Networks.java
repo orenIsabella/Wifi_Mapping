@@ -53,5 +53,11 @@ public ArrayList<A_Point> getNetworks() {
 public int size(){
 	return Networks.size();
 }
+/**
+ * @category deletes all the data 
+ */
+public void deleteAllData() {
+	Networks.clear();
+}
 
 }

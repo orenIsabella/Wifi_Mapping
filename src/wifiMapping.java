@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Component;
@@ -11,11 +12,15 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import algorithems.Algo2;
+import assignment.ToCsv;
 import dataBase.Networks;
+import dataBase.toArrayList;
 
 public class wifiMapping {
 
 	private JFrame frame;
+	protected Networks net;
+	public String customFilter;
 
 	/**
 	 * Launch the application.
@@ -56,7 +61,8 @@ public class wifiMapping {
 			public void actionPerformed(ActionEvent arg0) {				
 				String folderName = null;
 				JOptionPane.showInputDialog("Please enter the folders file", folderName);
-				//here we need to add the files in the folder we recieved to out database
+				net.addFromInput(folderName);
+				
 			}
 		});
 		btnAddFoldersName.setBounds(22, 24, 167, 43);
@@ -68,7 +74,7 @@ public class wifiMapping {
 			public void actionPerformed(ActionEvent e) {
 				String csvFileName = null;
 				JOptionPane.showInputDialog("Please enter the folders file", csvFileName);
-				//here we need to add the file csvFileName we recieved to out database
+				net.addFromWiggle(csvFileName);
 			}
 		});
 		btnNewButton.setBounds(22, 91, 167, 37);
@@ -77,7 +83,7 @@ public class wifiMapping {
 		JButton btnNewButton_1 = new JButton("Delete All");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//here we need to delete all the database we have
+				net.deleteAllData();
 			}
 		});
 		btnNewButton_1.setBackground(new Color(153, 204, 204));
@@ -88,6 +94,12 @@ public class wifiMapping {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//here we need to save all our database to a combined csv file
+				String destinationFolder="";
+			//	ArrayList<ArrayList<String>> help=new ArrayList<ArrayList<String>>();
+			//	help.add(net.getNetworks().
+				toArrayList help=new toArrayList(destinationFolder, net);
+				help.toCSV();
+				
 			}
 		});
 		btnNewButton_2.setBackground(new Color(153, 204, 204));
