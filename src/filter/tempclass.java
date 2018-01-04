@@ -47,7 +47,7 @@ public class tempclass {
 			e.printStackTrace();
 		}
 		
-		toArrayList b=new toArrayList("C:/Users/arbel/Desktop/elad.csv",a);
+		toArrayList b=new toArrayList("C:/Users/Isabella Oren/Desktop/elad.csv",a);
 		b.toCSV();
 	}
 
