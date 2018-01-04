@@ -12,13 +12,14 @@ import dataBase.Networks;
  */
 public class Filter_By_location implements Filter {
 	private boolean flag=true;
-	private Point3D point;
+	private Point3D pointmin;
+	private Point3D pointmax;
 
 
 
-	public Filter_By_location(Point3D point) {
-		this.point = point;
-
+	public Filter_By_location(Point3D pointmin ,Point3D pointmax) {
+		this.pointmin = pointmin;
+		this.pointmax=pointmax;
 	}
 
 	/**
@@ -35,13 +36,19 @@ public class Filter_By_location implements Filter {
 		int place=0;
 		while(place<nets.size()) {
 			if(flag) {
-				if(!(nets.getNetworks().get(place).getLocation().equals(point))) {
+				if(nets.getNetworks().get(place).getLocation().getLat()<pointmin.getLat()||
+						nets.getNetworks().get(place).getLocation().getLon()<pointmin.getLon()||
+						nets.getNetworks().get(place).getLocation().getLat()>pointmax.getLat()||
+						nets.getNetworks().get(place).getLocation().getLon()>pointmax.getLon()){
 					nets.getNetworks().remove(place);
 					place--;
 				}
 			}
 			else {
-				if((nets.getNetworks().get(place).getLocation().equals(point))) {
+				if(nets.getNetworks().get(place).getLocation().getLat()>pointmin.getLat()||
+						nets.getNetworks().get(place).getLocation().getLon()>pointmin.getLon()||
+						nets.getNetworks().get(place).getLocation().getLat()<pointmax.getLat()||
+						nets.getNetworks().get(place).getLocation().getLon()<pointmax.getLon()) {
 					nets.getNetworks().remove(place);
 					place--;
 				}
