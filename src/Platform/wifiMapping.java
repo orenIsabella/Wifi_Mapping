@@ -176,11 +176,10 @@ public class wifiMapping  extends Thread {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String csvFileName = null;
-				JOptionPane.showInputDialog("Please enter the folders file", csvFileName);
+				JOptionPane.showInputDialog("Please enter the CSV path", csvFileName);
 				net.addFromInput(csvFileName);
 				backup.getNetworks().addAll(net.getNetworks());
 				DataShow.setText(data(1));
-				DataShow2.setText(data(2));
 			}
 		});
 		btnNewButton.setBounds(22, 95, 167, 37);
