@@ -12,5 +12,8 @@
 	<classpathentry kind="lib" path="lib/jsr173_api-1.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/JavaAPIforKml-2.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jrt-fs.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/org.hamcrest.core_1.3.0.v201303031735.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

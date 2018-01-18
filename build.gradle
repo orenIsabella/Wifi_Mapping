@@ -19,11 +19,13 @@ apply plugin: 'eclipse'
  }
   dependencies {
    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.+'
-   
- }
-   dependencies {
-   
- }
-   dependencies {
-  
- }
+ }  
+ task GUI(type:JavaExec) {
+	main "main.java.Platform.wifiMapping"
+	classpath sourceSets.main.runtimeClasspath
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'src.main.java.Platform.wifiMapping'
+    }
+}
