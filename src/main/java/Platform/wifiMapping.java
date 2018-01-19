@@ -11,6 +11,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -25,6 +29,9 @@ import main.java.algorithems.Algo1;
 import main.java.algorithems.Algo2;
 import main.java.assignment.CreateKML;
 import main.java.assignment.Point3D;
+import main.java.assignment.ToCsv;
+import main.java.dataBase.A_Point;
+import main.java.dataBase.MySql;
 import main.java.dataBase.Networks;
 import main.java.dataBase.toArrayList;
 import main.java.filter.And_Filter;
@@ -37,6 +44,7 @@ import main.java.filter.Or_Filter;
 
 public class wifiMapping  extends Thread {
 
+	//protected static final ResultSet currenttime = " ";
 	private  JFrame frame;
 	protected Networks net=new Networks();
 	protected Networks backup=new Networks();
@@ -60,7 +68,19 @@ public class wifiMapping  extends Thread {
 	private Filter toFilter=null;
 	private File file;
 	private long timeStamp;
+	private String beforetime="";
+	ExecutorService threads= Executors.newFixedThreadPool(2);
 	private Thread t1;
+	private Thread t2;
+	private boolean t2flag=true;
+	private JTextField ipField;
+	private JTextField portField;
+	private JTextField usernameField;
+	private JTextField passwordField;
+	private JTextField databaseField;
+	private JTextField tableField;
+	
+	//static ArrayList<A_Point> points;
 	/**
 	 * Launch the application.
 	 */
@@ -133,7 +153,7 @@ public class wifiMapping  extends Thread {
 	private void initialize() {
 
 		frame = new JFrame();
-		frame.setBounds(100, 100, 844, 604);
+		frame.setBounds(100, 100, 1259, 604);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -161,7 +181,8 @@ public class wifiMapping  extends Thread {
 				DataShow.setText(data(1));
 				DataShow2.setText(data(2));
 				thread_1();
-				t1.start();
+				//t1.start();
+				threads.execute(t1);
 			}
 		});
 		btnAddFoldersName.setBounds(22, 28, 167, 43);
@@ -660,6 +681,195 @@ public class wifiMapping  extends Thread {
 		btnApply.setBackground(new Color(255, 255, 153));
 		btnApply.setBounds(660, 313, 134, 161);
 		frame.getContentPane().add(btnApply);
+		
+		JLabel lblInsertHereThe = new JLabel("Insert here the data for the SQL:");
+		lblInsertHereThe.setBounds(811, 28, 398, 29);
+		frame.getContentPane().add(lblInsertHereThe);
+		
+		JLabel lblIp = new JLabel("ip:");
+		lblIp.setBounds(811, 81, 43, 29);
+		frame.getContentPane().add(lblIp);
+		
+		JLabel lblPort = new JLabel("Port:");
+		lblPort.setBounds(811, 134, 56, 29);
+		frame.getContentPane().add(lblPort);
+		
+		JLabel lblUsername = new JLabel("username:");
+		lblUsername.setBounds(811, 185, 134, 29);
+		frame.getContentPane().add(lblUsername);
+		
+		JLabel lblPassword = new JLabel("password:");
+		lblPassword.setBounds(811, 230, 115, 29);
+		frame.getContentPane().add(lblPassword);
+		
+		JLabel lblDatabase = new JLabel("database:");
+		lblDatabase.setBounds(811, 280, 134, 29);
+		frame.getContentPane().add(lblDatabase);
+		
+		JLabel lblTable = new JLabel("table:");
+		lblTable.setBounds(811, 338, 71, 29);
+		frame.getContentPane().add(lblTable);
+		
+		ipField = new JTextField();
+		ipField.setBounds(949, 78, 206, 35);
+		frame.getContentPane().add(ipField);
+		ipField.setColumns(10);
+		
+		portField = new JTextField();
+		portField.setBounds(949, 131, 206, 35);
+		frame.getContentPane().add(portField);
+		portField.setColumns(10);
+		
+		usernameField = new JTextField();
+		usernameField.setBounds(949, 182, 206, 35);
+		frame.getContentPane().add(usernameField);
+		usernameField.setColumns(10);
+		
+		passwordField = new JTextField();
+		passwordField.setBounds(949, 227, 206, 35);
+		frame.getContentPane().add(passwordField);
+		passwordField.setColumns(10);
+		
+		databaseField = new JTextField();
+		databaseField.setBounds(949, 280, 206, 35);
+		frame.getContentPane().add(databaseField);
+		databaseField.setColumns(10);
+		
+		tableField = new JTextField();
+		tableField.setBounds(949, 335, 206, 35);
+		frame.getContentPane().add(tableField);
+		tableField.setColumns(10);
+		
+		JButton btnApplyForSql = new JButton("Apply for SQL");
+		btnApplyForSql.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MySql msql =new MySql( ipField.getText() ,portField.getText(), usernameField.getText(), passwordField.getText(),databaseField.getText());
+				try {
+					Connection myCon=DriverManager.getConnection(msql.getUrl(), msql.getUserName(), msql.getPassword());
+					Statement mySta=myCon.createStatement();
+					Statement fortime= myCon.createStatement();
+					ResultSet myRes=mySta.executeQuery("SELECT * FROM "+tableField.getText());
+					ResultSet currenttime = fortime.executeQuery("SELECT UPDATE_TIME FROM information_schema.tables WHERE TABLE_SCHEMA = '"+ msql.getDataBase() +"' AND TABLE_NAME = '"+ tableField.getText() +"'");
+					ArrayList<ArrayList<String>> table= new ArrayList<ArrayList<String>>();
+					if(currenttime.next())
+					{
+						 beforetime=beforetime + currenttime.getString(1);
+					}
+					//ResultSet currenttime = fortime.executeQuery("SELECT UPDATE_TIME FROM information_schema.tables WHERE TABLE_SCHEMA = '"+ msql.getDataBase() +"' AND TABLE_NAME = '"+ tableField.getText() +"'");
+					//4) process the result set
+					
+					//ArrayList<ArrayList> inner = new ArrayList<ArrayList>();
+					while(myRes.next())
+					{
+						ArrayList<String> inner=new ArrayList<String>();
+						String time=myRes.getString("time");
+						String device=myRes.getString("device").trim();
+						String lat=myRes.getString("lat");
+						String lon=myRes.getString("lon");
+						String alt=myRes.getString("alt");
+						inner.add(lat);
+						inner.add(lon);
+						inner.add(alt);
+						inner.add(device.trim());
+						inner.add(time);
+					//	Point3D p=new Point3D(Double.parseDouble(lat),Double.parseDouble(lon),Double.parseDouble(alt));
+						int numofscans=Integer.parseInt(myRes.getString("number_of_ap"));
+						for(int i=0; i<numofscans; i++)
+						{
+							String mac=myRes.getString("mac"+i).trim();
+							String signal=myRes.getString("rssi"+i).trim();
+							String fake="...";
+							inner.add(fake);
+							inner.add(mac);
+							inner.add(fake);
+							inner.add(signal);
+						}  
+						
+					//	points.add
+						table.add(inner);
+					}
+					ToCsv myTable= new ToCsv(System.getProperty("user.home")+"\\Desktop\\temp.csv", table);
+					myTable.toCSV();
+					net.addFromInput(System.getProperty("user.home")+"\\Desktop\\temp.csv");
+					File file=new File (System.getProperty("user.home")+"\\Desktop\\temp.csv");
+					file.delete();
+					ArrayList<ArrayList<String>> tablecheck=new ArrayList<ArrayList<String>>();
+					t2=new Thread(
+							() -> {
+								while(t2flag) { 
+									try {
+										Thread.sleep(5000);
+										String updatetime="";
+										Statement myStmt2= myCon.createStatement();
+										ResultSet myRs0 = myStmt2.executeQuery("select * from ex4_db");
+										ResultSet myRs2 = myStmt2.executeQuery("SELECT UPDATE_TIME FROM information_schema.tables WHERE TABLE_SCHEMA = 'oop_course_ariel' AND TABLE_NAME = 'ex4_db'");
+										if(myRs2.next())
+										{
+											updatetime=updatetime+myRs2.getString(1);
+										}
+										if(!(beforetime.equals(updatetime)))
+										{
+											while(myRs0.next())
+											{
+												ArrayList<String> inner=new ArrayList<String>();
+												String time=myRes.getString("time");
+												String device=myRes.getString("device");
+												String lat=myRes.getString("lat");
+												String lon=myRes.getString("lon");
+												String alt=myRes.getString("alt");
+												inner.add(lat);
+												inner.add(lon);
+												inner.add(alt);
+												inner.add(device);
+												inner.add(time);
+												int numofscans=Integer.parseInt(myRes.getString("number_of_ap"));
+												for(int i=0; i<numofscans; i++)
+												{
+													String mac=myRes.getString("mac"+i);
+													String signal=myRes.getString("rssi"+i);
+													String fake="...";
+													inner.add(fake);
+													inner.add(mac);
+													inner.add(fake);
+													inner.add(signal);
+												}  
+												tablecheck.add(inner);
+											}
+											ToCsv myTable1= new ToCsv(System.getProperty("user.home")+"\\Desktop\\temp.csv", table);
+											myTable.toCSV();
+											net.addFromInput(System.getProperty("user.home")+"\\Desktop\\temp.csv");
+											File file1=new File (System.getProperty("user.home")+"\\Desktop\\temp.csv");
+											file1.delete();
+
+										}
+									} catch (SQLException | InterruptedException e1) {
+										// TODO Auto-generated catch block
+										//e1.printStackTrace();
+										t2flag=false;
+									}
+								}
+							});
+					threads.execute(t2);
+					
+					
+					
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				
+				
+				
+				
+				
+			} 
+		});
+		btnApplyForSql.setBackground(new Color(204, 255, 153));
+		btnApplyForSql.setBounds(949, 407, 206, 80);
+		frame.getContentPane().add(btnApplyForSql);
 		//		
 		//		JEditorPane dtrpnTheData = new JEditorPane();
 		//		dtrpnTheData.setText(destinationFolder);
@@ -680,5 +890,4 @@ public class wifiMapping  extends Thread {
 		return ans;
 
 	}
-
 }
