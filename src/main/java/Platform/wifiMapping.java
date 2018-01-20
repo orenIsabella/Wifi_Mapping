@@ -767,21 +767,23 @@ public class wifiMapping  extends Thread {
 						String lat=myRes.getString("lat");
 						String lon=myRes.getString("lon");
 						String alt=myRes.getString("alt");
+						inner.add(time);
+						inner.add(device.trim());
 						inner.add(lat);
 						inner.add(lon);
 						inner.add(alt);
-						inner.add(device.trim());
-						inner.add(time);
+					//	inner.add(device.trim());
+					//	inner.add(time);
 					//	Point3D p=new Point3D(Double.parseDouble(lat),Double.parseDouble(lon),Double.parseDouble(alt));
 						int numofscans=Integer.parseInt(myRes.getString("number_of_ap"));
 						for(int i=0; i<numofscans; i++)
 						{
 							String mac=myRes.getString("mac"+i).trim();
 							String signal=myRes.getString("rssi"+i).trim();
-							String fake="...";
-							inner.add(fake);
+						//	String fake="...";
+						//	inner.add(fake);
 							inner.add(mac);
-							inner.add(fake);
+						//	inner.add(fake);
 							inner.add(signal);
 						}  
 						
@@ -858,7 +860,7 @@ public class wifiMapping  extends Thread {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-						
+								
 				
 				
 			} 
