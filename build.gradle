@@ -20,6 +20,9 @@ apply plugin: 'eclipse'
   dependencies {
    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.+'
  }  
+  dependencies {
+ compile group: 'mysql', name: 'mysql-connector-java', version: '5.+'
+ }
  task GUI(type:JavaExec) {
 	main "main.java.Platform.wifiMapping"
 	classpath sourceSets.main.runtimeClasspath

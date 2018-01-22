@@ -49,7 +49,7 @@ public class wifiMapping  extends Thread {
 	protected Networks net=new Networks();
 	protected Networks backup=new Networks();
 	public String custom;
-	protected String destinationFolder;
+	protected String destinationFolder="";
 	public int filtersUsed;
 	protected int files;
 	private int devices;
@@ -798,9 +798,11 @@ public class wifiMapping  extends Thread {
 					ToCsv myTable= new ToCsv(System.getProperty("user.home")+"\\Desktop\\temp.csv", table);
 					myTable.toCSV();
 					net.addFromInput(System.getProperty("user.home")+"\\Desktop\\temp.csv");
+					DataShow.setText(data(2));
 					File file=new File (System.getProperty("user.home")+"\\Desktop\\temp.csv");
 					file.delete();
 					ArrayList<ArrayList<String>> tablecheck=new ArrayList<ArrayList<String>>();
+					
 					t2=new Thread(
 							() -> {
 								while(t2flag) { 
@@ -886,10 +888,13 @@ public class wifiMapping  extends Thread {
 	}
 	private String data(int i) {
 		String ans ="";
+		if(destinationFolder!="") {
 		File The_file=new File(destinationFolder);
 		File[] filePath=The_file.listFiles();
+		
 		if(i==1)
 			ans+="files in folder: "+filePath.length+" ";
+		}
 		if(i==2)
 			ans+="# of AP: "+net.size();
 		//ans+="filter: "+toFilter.getClass().getCanonicalName()+"\n";
